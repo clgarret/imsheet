@@ -1,5 +1,11 @@
 <template>
-  <div class="container">
+  <input type="hidden" class="sheet-tabstoggle" name="attr_sheetTab"  value="combat"  />
+  <div>
+      <button type="action" name="act_character" >Character</button>
+      <button type="action" name="act_combat" >Combat</button>
+  </div>
+
+  <div class="sheet-character">
     <div class="row">
       <div class="column">
         <div>
@@ -504,98 +510,433 @@
               <div>NAME</div>
               <div>EFFECT</div>
 
-              <div><input class="textinput" type="text" id="attr_talent1" name="attr_talent1"></div>
-              <div><input class="textinput" type="text" id="attr_talent_effect1" name="attr_talent_effect1"></div>
+              <div><input class="textinput" type="text" id="talent1" name="attr_talent1"></div>
+              <div><input class="textinput" type="text" id="talent_effect1" name="attr_talent_effect1"></div>
 
-              <div><input class="textinput" type="text" id="attr_talent2" name="attr_talent2"></div>
-              <div><input class="textinput" type="text" id="attr_talent_effect2" name="attr_talent_effect2"></div>
+              <div><input class="textinput" type="text" id="talent2" name="attr_talent2"></div>
+              <div><input class="textinput" type="text" id="talent_effect2" name="attr_talent_effect2"></div>
 
-              <div><input class="textinput" type="text" id="attr_talent3" name="attr_talent3"></div>
-              <div><input class="textinput" type="text" id="attr_talent_effect3" name="attr_talent_effect3"></div>
+              <div><input class="textinput" type="text" id="talent3" name="attr_talent3"></div>
+              <div><input class="textinput" type="text" id="talent_effect3" name="attr_talent_effect3"></div>
 
-              <div><input class="textinput" type="text" id="attr_talent4" name="attr_talent4"></div>
-              <div><input class="textinput" type="text" id="attr_talent_effect4" name="attr_talent_effect4"></div>
+              <div><input class="textinput" type="text" id="talent4" name="attr_talent4"></div>
+              <div><input class="textinput" type="text" id="talent_effect4" name="attr_talent_effect4"></div>
 
-              <div><input class="textinput" type="text" id="attr_talent5" name="attr_talent5"></div>
-              <div><input class="textinput" type="text" id="attr_talent_effect5" name="attr_talent_effect5"></div>
+              <div><input class="textinput" type="text" id="talent5" name="attr_talent5"></div>
+              <div><input class="textinput" type="text" id="talent_effect5" name="attr_talent_effect5"></div>
 
-              <div><input class="textinput" type="text" id="attr_talent6" name="attr_talent6"></div>
-              <div><input class="textinput" type="text" id="attr_talent_effect6" name="attr_talent_effect6"></div>
+              <div><input class="textinput" type="text" id="talent6" name="attr_talent6"></div>
+              <div><input class="textinput" type="text" id="talent_effect6" name="attr_talent_effect6"></div>
 
-              <div><input class="textinput" type="text" id="attr_talent7" name="attr_talent7"></div>
-              <div><input class="textinput" type="text" id="attr_talent_effect7" name="attr_talent_effect7"></div>
+              <div><input class="textinput" type="text" id="talent7" name="attr_talent7"></div>
+              <div><input class="textinput" type="text" id="talent_effect7" name="attr_talent_effect7"></div>
 
-              <div><input class="textinput" type="text" id="attr_talent8" name="attr_talent8"></div>
-              <div><input class="textinput" type="text" id="attr_talent_effect8" name="attr_talent_effect8"></div>
+              <div><input class="textinput" type="text" id="talent8" name="attr_talent8"></div>
+              <div><input class="textinput" type="text" id="talent_effect8" name="attr_talent_effect8"></div>
 
-              <div><input class="textinput" type="text" id="attr_talent9" name="attr_talent9"></div>
-              <div><input class="textinput" type="text" id="attr_talent_effect9" name="attr_talent_effect9"></div>
+              <div><input class="textinput" type="text" id="talent9" name="attr_talent9"></div>
+              <div><input class="textinput" type="text" id="talent_effect9" name="attr_talent_effect9"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-
-    <div class="row fullwidth">
-      <div class="side">
-        <div class="column">
-          <div class="sectionheader">
+    <div class="sheet-combat">
+      <div class="row fullwidth">
+        <div class="side">
+          <div class="column">
+            <div class="sectionheader">
               ------ INITIATIVE ------
-          </div>
-          <div class="inputitem">
+            </div>
+            <div class="inputitem">
               <textarea class="textinput" id="initiative" name="attr_initiative" rows="5"></textarea>
             </div>
+            <div class="row">
+              <div class="smalltable">
+                <div>Melee</div>
+                <div>Ranged</div>
+                <div>Reflexes</div>
+
+                <div><input class="textinput" type="text" id="initiative_melee" name="attr_initiative_melee"></div>
+                <div><input class="textinput" type="text" id="initiative_ranged" name="attr_initiative_ranged"></div>
+                <div><input class="textinput" type="text" id="initiative_reflexes" name="attr_initiative_reflexes"></div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="column">
-        <div class="sectionheader">
+        <div class="column">
+          <div class="sectionheader">
             ------ WOUNDS ------
-        </div>
-        <div class="row">
-          <div class="inputitem">
-            <input class="textinput smallinput" type="text" id="wounds_current" name="attr_wounds_current">
-            <label class="textinput_label" for="wounds_maximum">Current</label>
           </div>
-          /
-          <div class="inputitem">
-            <input class="textinput smallinput" type="text" id="wounds_maximum" name="attr_wounds_maximum">
-            <label class="textinput_label" for="wounds_maximum">Maximum</label>
+          <div class="row">
+            <div class="inputitem">
+              <input class="textinput smallinput" type="text" id="wounds_current" name="attr_wounds_current">
+              <label class="textinput_label" for="wounds_maximum">Current</label>
+            </div>
+            /
+            <div class="inputitem">
+              <input class="textinput smallinput" type="text" id="wounds_maximum" name="attr_wounds_maximum">
+              <label class="textinput_label" for="wounds_maximum">Maximum</label>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="sectionheader">
+            ------ CRITICAL WOUNDS ------
+          </div>
+          <div class="row">
+            <div class="criticalwoundstable">
+              <div>LOCATION</div>
+              <div>EFFECT</div>
+
+              <div><input class="textinput" type="text" id="wound_location1" name="attr_wound_location1"></div>
+              <div><input class="textinput" type="text" id="wound_effect1" name="attr_wound_effect1"></div>
+
+              <div><input class="textinput" type="text" id="wound_location2" name="attr_wound_location2"></div>
+              <div><input class="textinput" type="text" id="wound_effect2" name="attr_wound_effect2"></div>
+
+              <div><input class="textinput" type="text" id="wound_location3" name="attr_wound_location3"></div>
+              <div><input class="textinput" type="text" id="wound_effect3" name="attr_wound_effect3"></div>
+
+              <div><input class="textinput" type="text" id="wound_location4" name="attr_wound_location4"></div>
+              <div><input class="textinput" type="text" id="wound_effect4" name="attr_wound_effect4"></div>
+
+              <div><input class="textinput" type="text" id="wound_location5" name="attr_wound_location5"></div>
+              <div><input class="textinput" type="text" id="wound_effect5" name="attr_wound_effect5"></div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="column">
-        <div class="sectionheader">
-            ------ CRITICAL WOUNDS ------
+      <div class="row sectionheader margintop fullwidth">
+        ------ WEAPONS ------
+      </div>
+      <div class="row">
+        <div class="weaponstable">
+          <div>NAME</div>
+          <div>SPECIALISATION</div>
+          <div>TEST</div>
+          <div>DAMAGE</div>
+          <div>RANGE</div>
+          <div>MAG</div>
+          <div>ENC</div>
+          <div>TRAITS</div>
+
+          <div><input class="textinput" type="text" id="weapon_name1" name="attr_weapon_name1"></div>
+          <div><input class="textinput" type="text" id="weapon_specialisation1" name="attr_weapon_specialisation1"></div>
+          <div><input class="textinput" type="text" id="weapon_test1" name="attr_weapon_test1"></div>
+          <div><input class="textinput" type="text" id="weaon_damage1" name="attr_weaon_damage1"></div>
+          <div><input class="textinput" type="text" id="weapon_range1" name="attr_weapon_range1"></div>
+          <div><input class="textinput" type="text" id="weapon_mag1" name="attr_weapon_mag1"></div>
+          <div><input class="textinput" type="text" id="weapon_enc1" name="attr_weapon_enc1"></div>
+          <div><input class="textinput" type="text" id="weapon_traits1" name="attr_weapon_traits1"></div>
+
+          <div><input class="textinput" type="text" id="weapon_name1" name="attr_weapon_name1"></div>
+          <div><input class="textinput" type="text" id="weapon_specialisation1" name="attr_weapon_specialisation1"></div>
+          <div><input class="textinput" type="text" id="weapon_test1" name="attr_weapon_test1"></div>
+          <div><input class="textinput" type="text" id="weaon_damage1" name="attr_weaon_damage1"></div>
+          <div><input class="textinput" type="text" id="weapon_range1" name="attr_weapon_range1"></div>
+          <div><input class="textinput" type="text" id="weapon_mag1" name="attr_weapon_mag1"></div>
+          <div><input class="textinput" type="text" id="weapon_enc1" name="attr_weapon_enc1"></div>
+          <div><input class="textinput" type="text" id="weapon_traits1" name="attr_weapon_traits1"></div>
+
+          <div><input class="textinput" type="text" id="weapon_name1" name="attr_weapon_name1"></div>
+          <div><input class="textinput" type="text" id="weapon_specialisation1" name="attr_weapon_specialisation1"></div>
+          <div><input class="textinput" type="text" id="weapon_test1" name="attr_weapon_test1"></div>
+          <div><input class="textinput" type="text" id="weaon_damage1" name="attr_weaon_damage1"></div>
+          <div><input class="textinput" type="text" id="weapon_range1" name="attr_weapon_range1"></div>
+          <div><input class="textinput" type="text" id="weapon_mag1" name="attr_weapon_mag1"></div>
+          <div><input class="textinput" type="text" id="weapon_enc1" name="attr_weapon_enc1"></div>
+          <div><input class="textinput" type="text" id="weapon_traits1" name="attr_weapon_traits1"></div>
+
+          <div><input class="textinput" type="text" id="weapon_name1" name="attr_weapon_name1"></div>
+          <div><input class="textinput" type="text" id="weapon_specialisation1" name="attr_weapon_specialisation1"></div>
+          <div><input class="textinput" type="text" id="weapon_test1" name="attr_weapon_test1"></div>
+          <div><input class="textinput" type="text" id="weaon_damage1" name="attr_weaon_damage1"></div>
+          <div><input class="textinput" type="text" id="weapon_range1" name="attr_weapon_range1"></div>
+          <div><input class="textinput" type="text" id="weapon_mag1" name="attr_weapon_mag1"></div>
+          <div><input class="textinput" type="text" id="weapon_enc1" name="attr_weapon_enc1"></div>
+          <div><input class="textinput" type="text" id="weapon_traits1" name="attr_weapon_traits1"></div>
+
+          <div><input class="textinput" type="text" id="weapon_name1" name="attr_weapon_name1"></div>
+          <div><input class="textinput" type="text" id="weapon_specialisation1" name="attr_weapon_specialisation1"></div>
+          <div><input class="textinput" type="text" id="weapon_test1" name="attr_weapon_test1"></div>
+          <div><input class="textinput" type="text" id="weaon_damage1" name="attr_weaon_damage1"></div>
+          <div><input class="textinput" type="text" id="weapon_range1" name="attr_weapon_range1"></div>
+          <div><input class="textinput" type="text" id="weapon_mag1" name="attr_weapon_mag1"></div>
+          <div><input class="textinput" type="text" id="weapon_enc1" name="attr_weapon_enc1"></div>
+          <div><input class="textinput" type="text" id="weapon_traits1" name="attr_weapon_traits1"></div>
         </div>
-        <div class="row">
-          <div class="criticalwoundstable">
-            <div>LOCATION</div>
-            <div>EFFECT</div>
+      </div>
+      <div class="row sectionheader margintop fullwidth">
+        ------ ARMOUR ------
+      </div>
+      <div class="row">
+        <div class="column">
+          <div class="armourtable">
+            <div>NAME</div>
+            <div>LOCATIONS</div>
+            <div>ARMOUR</div>
+            <div>ENC</div>
+            <div>TRAITS</div>
 
-            <div><input class="textinput" type="text" id="wound_location1" name="attr_wound_location1"></div>
-            <div><input class="textinput" type="text" id="wound_effect1" name="attr_wound_effect1"></div>
+            <div><input class="textinput" type="text" id="armour_name1" name="attr_armour_name1"></div>
+            <div><input class="textinput" type="text" id="armour_locations1" name="attr_armour_locations1"></div>
+            <div><input class="textinput" type="text" id="armour_armour1" name="attr_armour_armour1"></div>
+            <div><input class="textinput" type="text" id="armour_enc1" name="attr_armour_enc1"></div>
+            <div><input class="textinput" type="text" id="armour_traits1" name="attr_armour_traits1"></div>
 
-            <div><input class="textinput" type="text" id="wound_location2" name="attr_wound_location2"></div>
-            <div><input class="textinput" type="text" id="wound_effect2" name="attr_wound_effect2"></div>
+            <div><input class="textinput" type="text" id="armour_name2" name="attr_armour_name2"></div>
+            <div><input class="textinput" type="text" id="armour_locations2" name="attr_armour_locations2"></div>
+            <div><input class="textinput" type="text" id="armour_armour2" name="attr_armour_armour2"></div>
+            <div><input class="textinput" type="text" id="armour_enc2" name="attr_armour_enc2"></div>
+            <div><input class="textinput" type="text" id="armour_traits2" name="attr_armour_traits2"></div>
 
-            <div><input class="textinput" type="text" id="wound_location3" name="attr_wound_location3"></div>
-            <div><input class="textinput" type="text" id="wound_effect3" name="attr_wound_effect3"></div>
+            <div><input class="textinput" type="text" id="armour_name3" name="attr_armour_name3"></div>
+            <div><input class="textinput" type="text" id="armour_locations3" name="attr_armour_locations3"></div>
+            <div><input class="textinput" type="text" id="armour_armour3" name="attr_armour_armour3"></div>
+            <div><input class="textinput" type="text" id="armour_enc3" name="attr_armour_enc3"></div>
+            <div><input class="textinput" type="text" id="armour_traits3" name="attr_armour_traits3"></div>
 
-            <div><input class="textinput" type="text" id="wound_location4" name="attr_wound_location4"></div>
-            <div><input class="textinput" type="text" id="wound_effect4" name="attr_wound_effect4"></div>
+            <div><input class="textinput" type="text" id="armour_name4" name="attr_armour_name4"></div>
+            <div><input class="textinput" type="text" id="armour_locations4" name="attr_armour_locations4"></div>
+            <div><input class="textinput" type="text" id="armour_armour4" name="attr_armour_armour4"></div>
+            <div><input class="textinput" type="text" id="armour_enc4" name="attr_armour_enc4"></div>
+            <div><input class="textinput" type="text" id="armour_traits4" name="attr_armour_traits4"></div>
 
-            <div><input class="textinput" type="text" id="wound_location5" name="attr_wound_location5"></div>
-            <div><input class="textinput" type="text" id="wound_effect5" name="attr_wound_effect5"></div>
+            <div><input class="textinput" type="text" id="armour_name5" name="attr_armour_name5"></div>
+            <div><input class="textinput" type="text" id="armour_locations5" name="attr_armour_locations5"></div>
+            <div><input class="textinput" type="text" id="armour_armour5" name="attr_armour_armour5"></div>
+            <div><input class="textinput" type="text" id="armour_enc5" name="attr_armour_enc5"></div>
+            <div><input class="textinput" type="text" id="armour_traits5" name="attr_armour_traits5"></div>
           </div>
+        </div>
+        <div class="column">
+          <div class="smalltable">
+            <div>D10</div>
+            <div>HIT LOCATION</div>
+            <div>ARMOUR</div>
+            <div>1</div>
+            <div>HEAD</div>
+            <div><input class="textinput" type="text" id="hit_location_armour1" name="attr_hit_location_armour1"></div>
+            <div>2</div>
+            <div>LEFT ARM</div>
+            <div><input class="textinput" type="text" id="hit_location_armour2" name="attr_hit_location_armour2"></div>
+            <div>3</div>
+            <div>RIGHT ARM</div>
+            <div><input class="textinput" type="text" id="hit_location_armour3" name="attr_hit_location_armour3"></div>
+            <div>4</div>
+            <div>LEFT LEG</div>
+            <div><input class="textinput" type="text" id="hit_location_armour4" name="attr_hit_location_armour4"></div>
+            <div>5</div>
+            <div>RIGHT LEG</div>
+            <div><input class="textinput" type="text" id="hit_location_armour5" name="attr_hit_location_armour5"></div>
+            <div>6-10</div>
+            <div>BODY</div>
+            <div><input class="textinput" type="text" id="hit_location_armour6" name="attr_hit_location_armour6"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column width50">
+          <div class="sectionheader">
+            ------ COMBAT NOTES ------
+          </div>
+          <div class="inputitem">
+            <textarea rows="15" class="textinput" id="combat_notes" name="attr_combat_notes"></textarea>
+          </div>
+        </div>
+        <div class="column width50">
+          <div class="sectionheader">
+            ------ EQUIPMENT ------
+          </div>
+          <div class="row">
+            <div class="equipmenttable">
+
+              <div><input class="textinput" type="text" id="equipment1" name="attr_equipment1"></div>
+              <div><input class="textinput" type="text" id="equipment2" name="attr_equipment2"></div>
+              <div><input class="textinput" type="text" id="equipment3" name="attr_equipment3"></div>
+
+              <div><input class="textinput" type="text" id="equipment4" name="attr_equipment4"></div>
+              <div><input class="textinput" type="text" id="equipment5" name="attr_equipment5"></div>
+              <div><input class="textinput" type="text" id="equipment6" name="attr_equipment6"></div>
+
+              <div><input class="textinput" type="text" id="equipment7" name="attr_equipment7"></div>
+              <div><input class="textinput" type="text" id="equipment8" name="attr_equipment8"></div>
+              <div><input class="textinput" type="text" id="equipment9" name="attr_equipment9"></div>
+
+              <div><input class="textinput" type="text" id="equipment10" name="attr_equipment10"></div>
+              <div><input class="textinput" type="text" id="equipment11" name="attr_equipment11"></div>
+              <div><input class="textinput" type="text" id="equipment12" name="attr_equipment12"></div>
+
+              <div><input class="textinput" type="text" id="equipment13" name="attr_equipment13"></div>
+              <div><input class="textinput" type="text" id="equipment14" name="attr_equipment14"></div>
+              <div><input class="textinput" type="text" id="equipment15" name="attr_equipment15"></div>
+
+              <div><input class="textinput" type="text" id="equipment16" name="attr_equipment16"></div>
+              <div><input class="textinput" type="text" id="equipment17" name="attr_equipment17"></div>
+              <div><input class="textinput" type="text" id="equipment18" name="attr_equipment18"></div>
+
+              <div><input class="textinput" type="text" id="equipment19" name="attr_equipment19"></div>
+              <div><input class="textinput" type="text" id="equipment20" name="attr_equipment20"></div>
+              <div>
+                ENCUMBRANCE
+                <div class="row">
+                  <div class="inputitem">
+                    <input class="textinput smallinput" type="text" id="encumbrance_current" name="attr_encumbrance_current">
+                    <label class="textinput_label" for="encumbrance_current">CURRENT</label>
+                  </div>
+                  |
+                  <div class="inputitem">
+                    <input class="textinput smallinput" type="text" id="encumbrance_max" name="attr_encumbrance_max">
+                    <label class="textinput_label" for="encumbrance_max">MAXIMUM</label>
+                  </div>
+                </div>
+              </div>
+
+              <div><input class="textinput" type="text" id="equipment21" name="attr_equipment21"></div>
+              <div><input class="textinput" type="text" id="equipment22" name="attr_equipment22"></div>
+              <div><input class="textinput" type="text" id="equipment23" name="attr_equipment23"></div>
+
+              <div><input class="textinput" type="text" id="equipment24" name="attr_equipment24"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="sectionheader">
+            ------ PSYCHIC POWERS ------
+        </div>
+      </div>
+      <div class="row">
+        <div class="psychictable">
+          <div>NAME</div>
+          <div>WR</div>
+          <div>DIFFICULTY</div>
+          <div>RANGE</div>
+          <div>TARGET</div>
+          <div>DURATION</div>
+          <div>EFFECT</div>
+
+          <div><input class="textinput" type="text" id="psychic_name1" name="attr_psychic_name1"></div>
+          <div><input class="textinput" type="text" id="psychic_wr1" name="attr_psychic_wr1"></div>
+          <div><input class="textinput" type="text" id="psychic_difficulty1" name="attr_psychic_difficulty1"></div>
+          <div><input class="textinput" type="text" id="psychic_range1" name="attr_psychic_range1"></div>
+          <div><input class="textinput" type="text" id="psychic_target1" name="attr_psychic_target1"></div>
+          <div><input class="textinput" type="text" id="psychic_duration1" name="attr_psychic_duration1"></div>
+          <div><input class="textinput" type="text" id="psychic_effect1" name="attr_psychic_effect1"></div>
+
+          <div><input class="textinput" type="text" id="psychic_name2" name="attr_psychic_name2"></div>
+          <div><input class="textinput" type="text" id="psychic_wr2" name="attr_psychic_wr2"></div>
+          <div><input class="textinput" type="text" id="psychic_difficulty2" name="attr_psychic_difficulty2"></div>
+          <div><input class="textinput" type="text" id="psychic_range2" name="attr_psychic_range2"></div>
+          <div><input class="textinput" type="text" id="psychic_target2" name="attr_psychic_target2"></div>
+          <div><input class="textinput" type="text" id="psychic_duration2" name="attr_psychic_duration2"></div>
+          <div><input class="textinput" type="text" id="psychic_effect2" name="attr_psychic_effect2"></div>
+
+          <div><input class="textinput" type="text" id="psychic_name3" name="attr_psychic_name3"></div>
+          <div><input class="textinput" type="text" id="psychic_wr3" name="attr_psychic_wr3"></div>
+          <div><input class="textinput" type="text" id="psychic_difficulty3" name="attr_psychic_difficulty3"></div>
+          <div><input class="textinput" type="text" id="psychic_range3" name="attr_psychic_range3"></div>
+          <div><input class="textinput" type="text" id="psychic_target3" name="attr_psychic_target3"></div>
+          <div><input class="textinput" type="text" id="psychic_duration3" name="attr_psychic_duration3"></div>
+          <div><input class="textinput" type="text" id="psychic_effect3" name="attr_psychic_effect3"></div>
+
+          <div><input class="textinput" type="text" id="psychic_name4" name="attr_psychic_name4"></div>
+          <div><input class="textinput" type="text" id="psychic_wr4" name="attr_psychic_wr4"></div>
+          <div><input class="textinput" type="text" id="psychic_difficulty4" name="attr_psychic_difficulty4"></div>
+          <div><input class="textinput" type="text" id="psychic_range4" name="attr_psychic_range4"></div>
+          <div><input class="textinput" type="text" id="psychic_target4" name="attr_psychic_target4"></div>
+          <div><input class="textinput" type="text" id="psychic_duration4" name="attr_psychic_duration4"></div>
+          <div><input class="textinput" type="text" id="psychic_effect4" name="attr_psychic_effect4"></div>
+
+          <div><input class="textinput" type="text" id="psychic_name5" name="attr_psychic_name5"></div>
+          <div><input class="textinput" type="text" id="psychic_wr5" name="attr_psychic_wr5"></div>
+          <div><input class="textinput" type="text" id="psychic_difficulty5" name="attr_psychic_difficulty5"></div>
+          <div><input class="textinput" type="text" id="psychic_range5" name="attr_psychic_range5"></div>
+          <div><input class="textinput" type="text" id="psychic_target5" name="attr_psychic_target5"></div>
+          <div><input class="textinput" type="text" id="psychic_duration5" name="attr_psychic_duration5"></div>
+          <div><input class="textinput" type="text" id="psychic_effect5" name="attr_psychic_effect5"></div>
+
+          <div><input class="textinput" type="text" id="psychic_name6" name="attr_psychic_name6"></div>
+          <div><input class="textinput" type="text" id="psychic_wr6" name="attr_psychic_wr1"></div>
+          <div><input class="textinput" type="text" id="psychic_difficulty6" name="attr_psychic_difficulty6"></div>
+          <div><input class="textinput" type="text" id="psychic_range6" name="attr_psychic_range6"></div>
+          <div><input class="textinput" type="text" id="psychic_target6" name="attr_psychic_target6"></div>
+          <div><input class="textinput" type="text" id="psychic_duration6" name="attr_psychic_duration6"></div>
+          <div><input class="textinput" type="text" id="psychic_effect6" name="attr_psychic_effect6"></div>
+
+          <div><input class="textinput" type="text" id="psychic_name7" name="attr_psychic_name7"></div>
+          <div><input class="textinput" type="text" id="psychic_wr7" name="attr_psychic_wr7"></div>
+          <div><input class="textinput" type="text" id="psychic_difficulty7" name="attr_psychic_difficulty7"></div>
+          <div><input class="textinput" type="text" id="psychic_range7" name="attr_psychic_range7"></div>
+          <div><input class="textinput" type="text" id="psychic_target7" name="attr_psychic_target7"></div>
+          <div><input class="textinput" type="text" id="psychic_duration7" name="attr_psychic_duration7"></div>
+          <div><input class="textinput" type="text" id="psychic_effect7" name="attr_psychic_effect7"></div>
+
+          <div><input class="textinput" type="text" id="psychic_name8" name="attr_psychic_name8"></div>
+          <div><input class="textinput" type="text" id="psychic_wr8" name="attr_psychic_wr8"></div>
+          <div><input class="textinput" type="text" id="psychic_difficulty8" name="attr_psychic_difficulty8"></div>
+          <div><input class="textinput" type="text" id="psychic_range8" name="attr_psychic_range8"></div>
+          <div><input class="textinput" type="text" id="psychic_target8" name="attr_psychic_target8"></div>
+          <div><input class="textinput" type="text" id="psychic_duration8" name="attr_psychic_duration8"></div>
+          
+          <div class="row">
+            <div class="column width50">
+              <input class="textinput" type="text" id="psychic_effect8" name="attr_psychic_effect8">
+              <input class="textinput" type="text" id="psychic_effect9" name="attr_psychic_effect9">
+              <input class="textinput" type="text" id="psychic_effect10" name="attr_psychic_effect10">
+            </div>
+            <div class="column width50">
+
+              WARP CHARGE
+              <div class="row">
+                <div class="inputitem">
+                  <input class="textinput smallinput" type="text" id="warp_charge_current" name="attr_warp_charge_current">
+                  <label class="textinput_label" for="warp_charge_current">CURRENT</label>
+                </div>
+                |
+                <div class="inputitem">
+                  <input class="textinput smallinput" type="text" id="warp_charge_threshold" name="attr_warp_charge_threshold">
+                  <label class="textinput_label" for="warp_charge_threshold">THRESHOLD</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div><input class="textinput" type="text" id="psychic_name9" name="attr_psychic_name9"></div>
+          <div><input class="textinput" type="text" id="psychic_wr9" name="attr_psychic_wr9"></div>
+          <div><input class="textinput" type="text" id="psychic_difficulty9" name="attr_psychic_difficulty9"></div>
+          <div><input class="textinput" type="text" id="psychic_range9" name="attr_psychic_range9"></div>
+          <div><input class="textinput" type="text" id="psychic_target9" name="attr_psychic_target9"></div>
+          <div><input class="textinput" type="text" id="psychic_duration9" name="attr_psychic_duration9"></div>
+
+          <div><input class="textinput" type="text" id="psychic_name10" name="attr_psychic_name10"></div>
+          <div><input class="textinput" type="text" id="psychic_wr10" name="attr_psychic_wr10"></div>
+          <div><input class="textinput" type="text" id="psychic_difficulty10" name="attr_psychic_difficulty10"></div>
+          <div><input class="textinput" type="text" id="psychic_range10" name="attr_psychic_range10"></div>
+          <div><input class="textinput" type="text" id="psychic_target10" name="attr_psychic_target10"></div>
+          <div><input class="textinput" type="text" id="psychic_duration10" name="attr_psychic_duration10"></div>
         </div>
       </div>
     </div>
   </div>
-    
 </template>
 
-<script>
+
+<script type="text/worker">
+
+// const buttonlist = ["character","combat"];
+// buttonlist.forEach(button => {
+//     on(`clicked:${button}`, function() {
+//         setAttrs({
+//             sheetTab: button
+//         });
+//     });
+// });
+
 export default {
   name: 'App',
   components: {}
@@ -691,6 +1032,21 @@ label {
     min-height: 30vh;
     width: 100%;
 }
+.talenttable > div {
+  margin: 2px;
+  padding: 2px;
+  border: 1px solid #000000;
+}
+.weaponstable {
+  display: grid;
+    grid-template-columns: 3fr 2fr 1fr 1fr 1fr 1fr 1fr 3fr;
+    width: 100%;
+}
+.weaponstable > div {
+  margin: 2px;
+  padding: 2px;
+  border: 1px solid #000000;
+}
 .criticalwoundstable > div {
   margin: 2px;
   padding: 2px;
@@ -701,7 +1057,12 @@ label {
     grid-template-columns: 2fr 5fr;
     width: 100%;
 }
-.talenttable > div {
+.armourtable {
+  display: grid;
+    grid-template-columns: 3fr 2fr 1fr 1fr 3fr;
+    width: 100%;
+}
+.armourtable > div {
   margin: 2px;
   padding: 2px;
   border: 1px solid #000000;
@@ -717,5 +1078,56 @@ label {
 
 .logo {
   max-width: 406px;
+}
+
+.smalltable {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.smalltable > div {
+  margin: 2px;
+  padding: 2px;
+  border: 1px solid #000000;
+}
+
+.equipmenttable {
+  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+}
+.equipmenttable > div {
+  margin: 2px;
+  padding: 2px;
+  border: 1px solid #000000;
+}
+.equipmenttable > div:nth-child(3n+21) {
+  grid-row: span 3;
+  border-left: 0;
+}
+.psychictable {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 3fr;
+  width: 100%;
+}
+.psychictable > div {
+  margin: 2px;
+  padding: 2px;
+  border: 1px solid #000000;
+}
+.psychictable > div:nth-child(7n+63) {
+  grid-row: span 3;
+  border-left: 0;
+}
+
+/*Configure the tab buttons*/
+.charsheet .sheet-character,
+.charsheet .sheet-combat {
+    display: none;
+}
+
+/* show the selected tab */
+.charsheet .sheet-tabstoggle[value="character"] ~ div.sheet-character,
+.charsheet .sheet-tabstoggle[value="combat"] ~ div.sheet-combat {
+    display: block;
 }
 </style>

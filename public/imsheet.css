@@ -90,8 +90,38 @@ label {
   padding: 2px;
   border: 1px solid #000000;
 }
+.weaponstable {
+  display: grid;
+    grid-template-columns: 3fr 2fr 1fr 1fr 1fr 1fr 1fr 3fr;
+    width: 100%;
+}
+.weaponstable > div {
+  margin: 2px;
+  padding: 2px;
+  border: 1px solid #000000;
+}
+.criticalwoundstable > div {
+  margin: 2px;
+  padding: 2px;
+  border: 1px solid #000000;
+}
+.criticalwoundstable {
+  display: grid;
+    grid-template-columns: 2fr 5fr;
+    width: 100%;
+}
+.armourtable {
+  display: grid;
+    grid-template-columns: 3fr 2fr 1fr 1fr 3fr;
+    width: 100%;
+}
+.armourtable > div {
+  margin: 2px;
+  padding: 2px;
+  border: 1px solid #000000;
+}
 .side {
-	padding: 1rem;
+  padding-top: 1rem;
 	width: 25rem;
 }
 .main {
@@ -101,4 +131,55 @@ label {
 
 .logo {
   max-width: 406px;
+}
+
+.smalltable {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.smalltable > div {
+  margin: 2px;
+  padding: 2px;
+  border: 1px solid #000000;
+}
+
+.equipmenttable {
+  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+}
+.equipmenttable > div {
+  margin: 2px;
+  padding: 2px;
+  border: 1px solid #000000;
+}
+.equipmenttable > div:nth-child(3n+21) {
+  grid-row: span 3;
+  border-left: 0;
+}
+.psychictable {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 3fr;
+  width: 100%;
+}
+.psychictable > div {
+  margin: 2px;
+  padding: 2px;
+  border: 1px solid #000000;
+}
+.psychictable > div:nth-child(7n+63) {
+  grid-row: span 3;
+  border-left: 0;
+}
+
+/*Configure the tab buttons*/
+.sheet-character,
+.sheet-combat {
+    display: none;
+}
+
+/* show the selected tab */
+.sheet-tabstoggle[value="character"] ~ div.sheet-character,
+.sheet-tabstoggle[value="combat"] ~ div.sheet-combat {
+    display: block;
 }
