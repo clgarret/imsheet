@@ -97,16 +97,50 @@
           <div class="characteristicstable">
             <div>&nbsp;</div>
             <div>
+              <button type="action" value="current_ws|Weapon Skill" name="act_characteristic">
                 WS
+              </button>
             </div>
-            <div>BS</div>
-            <div>STR</div>
-            <div>TGH</div>
-            <div>AG</div>
-            <div>INT</div>
-            <div>PER</div>
-            <div>WIL</div>
-            <div>FEL</div>
+            <div>
+              <button type="action" value="current_bs|Ballistic Skill" name="act_characteristic">
+                BS
+              </button>
+            </div>
+            <div>
+              <button type="action" value="current_str|Strength" name="act_characteristic">
+                STR
+              </button>
+            </div>
+            <div>
+              <button type="action" value="current_tgh|Toughness" name="act_characteristic">
+                TGH
+              </button>
+            </div>
+            <div>
+              <button type="action" value="current_ag|Agility" name="act_characteristic">
+                AG
+              </button>
+            </div>
+            <div>
+              <button type="action" value="current_int|Intelligence" name="act_characteristic">
+                INT
+              </button>
+            </div>
+            <div>
+              <button type="action" value="current_per|Perception" name="act_characteristic">
+                PER
+              </button>
+            </div>
+            <div>
+              <button type="action" value="current_wil|Willpower" name="act_characteristic">
+                WIL
+              </button>
+            </div>
+            <div>
+              <button type="action" value="current_fel|Fellowship" name="act_characteristic">
+                FEL
+              </button>
+            </div>
 
             <div>Starting</div>
             <div class="inputitem">
@@ -926,18 +960,6 @@
   </div>
 </div>
 
-<script type="text/worker">
-  const buttonlist = ["character","combat"];
-  buttonlist.forEach(button => {
-      on(`clicked:${button}`, function() {
-        console.log(button);
-        setAttrs({
-            sheetTab: button
-        });
-      });
-  });
-</script>
-
 <!--Roll Template-->
 <rolltemplate class="sheet-rolltemplate-dh2ed">
 	<table>
@@ -949,12 +971,21 @@
 				<img alt="spacer" src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Dark_Heresy_2ed/img/spacer.png"
 					class="sheet-rolltemplate-spacer"></th>
 		</tr>
-		{{#skill}}
 		<tr>
 			<td><span class="sheet-tcat">Skill: </span></td>
 			<td><span class="sheet-inlinerollresult">{{skill}}</span></td>
 		</tr>
-		{{/skill}}
+    <tr>
+			<td><span class="sheet-tcat">Modifier: </span></td>
+			<td><span class="sheet-inlinerollresult">{{modifier}}</span></td>
+		</tr>
+    <tr class="sheet-topline">
+			<th colspan="2"><span></span></th>
+		</tr>
+    <tr>
+			<td><span class="sheet-tcat">Target: </span></td>
+			<td><span class="sheet-inlinerollresult">{{computed::target}}</span></td>
+		</tr>
 		{{#aim}}
 		<tr>
 			<td><span class="sheet-tcat">Aim: </span></td>
@@ -973,21 +1004,6 @@
 			<td><span class="sheet-inlinerollresult">{{attacktype}}</span></td>
 		</tr>
 		{{/attacktype}}
-		{{#modifier}}
-		<tr>
-			<td><span class="sheet-tcat">Modifier: </span></td>
-			<td><span class="sheet-inlinerollresult">{{modifier}}</span></td>
-		</tr>
-		{{/modifier}}
-		{{#target}}
-		<tr class="sheet-topline">
-			<th colspan="2"><span></span></th>
-		</tr>
-		<tr>
-			<td><span class="sheet-tcat">Target: </span></td>
-			<td><span class="sheet-inlinerollresult">{{target}}</span></td>
-		</tr>
-		{{/target}}
 		{{#threshold}}
 		<tr>
 			<td><span class="sheet-tcat">Threshold: </span></td>
@@ -1025,7 +1041,7 @@
 		{{#rollGreater() degrees 0}}
 		<tr class="sheet-success">
 			<th colspan="2">
-				<span>Success</span> <span>with </span> {{degrees}} <span> additional degrees</span>
+				 <span>+</span> {{degrees}} <span>SL </span>
 			</th>
 		</tr>
 		{{/rollGreater() degrees 0}}
@@ -1034,14 +1050,14 @@
 		{{#^rollLess() target roll}}
 		<tr class="sheet-success">
 			<th colspan="2">
-				<span>Success</span> <span> </span>  <span></span>
+				<span>Success 0 </span> <span>SL </span>
 			</th>
 		</tr>
 		{{/^rollLess() target roll}}
 		{{#rollLess() target roll}}
 		<tr class="sheet-success">
 			<th colspan="2">
-				<span>Failure</span> <span> </span>  <span></span>
+				<span>Failure 0</span> <span>SL </span> 
 			</th>
 		</tr>
 		{{/rollLess() target roll}}
@@ -1050,7 +1066,7 @@
 		{{#rollLess() degrees 0}}
 		<tr class="sheet-failure">
 			<th colspan="2">
-				<span>Failure</span> <span>with </span> {{degrees}} <span> additional degrees</span>
+				<span>Failure</span>  {{degrees}} <span>SL</span>
 			</th>
 		</tr>
 		{{/rollLess() degrees 0}}
@@ -1167,3 +1183,36 @@
 		{{/special}}
 	</table>
 </rolltemplate>
+
+<script type="text/worker">
+  const buttonlist = ["character","combat"];
+  buttonlist.forEach(button => {
+      on(`clicked:${button}`, function() {
+        console.log(button);
+        setAttrs({
+            sheetTab: button
+        });
+      });
+  });
+  on('clicked:characteristic', (info) => {
+    let characteristic = info.htmlAttributes.value;
+    const myArray = characteristic.split("|");
+    const selected_characteristic = myArray[0];
+    const selected_characteristic_name = myArray[1];
+    console.log(selected_characteristic);
+    console.log(selected_characteristic_name);
+    startRoll("&{template:dh2ed} [[[[floor((@{"+selected_characteristic+"} +[[ ?{Aim | Half aim (+10),+10| No aim (+0),+0 | Full aim (+20),+20} + ?{Range | Point Blank (+30),+30 | Short Range (+10),+10 | Standard range (+0),+0 | Long Range (-10),-10 | Extreme Range (-30),-30} + ?{Rate of Fire/Attack Type|Standard (+10),+10 | Semi auto (+0),+0 | Full Auto (-10),-10 | Called Shot (-20),-20 | Suppressing Fire (-20),-20} + [[?{Modifier|0}]] ]])/10))]]-[[floor([[1d100]]/10)]]]][[@{"+selected_characteristic+"}+?{Modifier|0}]] {{name="+selected_characteristic_name+"}}{{roll= $[[3]] }}{{degrees=$[[5]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[1]]}}{{target=$[[1]]}}", (results) => {
+
+      const skill = results.results.skill.result;
+      const modifier = results.results.modifier.result;
+      const target = parseInt(skill)+parseInt(modifier);
+
+      finishRoll(
+          results.rollId,
+          {
+              target: target
+          }
+      );
+    });
+});
+</script>

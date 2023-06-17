@@ -1,5 +1,5 @@
 <template>
-  <input type="hidden" class="sheet-tabstoggle" name="attr_sheetTab"  value="combat"  />
+  <input type="hidden" class="sheet-tabstoggle" name="attr_sheetTab"  value="character"  />
   <div>
       <button type="action" name="act_character" >Character</button>
       <button type="action" name="act_combat" >Combat</button>
@@ -928,14 +928,14 @@
 
 <script type="text/worker">
 
-// const buttonlist = ["character","combat"];
-// buttonlist.forEach(button => {
-//     on(`clicked:${button}`, function() {
-//         setAttrs({
-//             sheetTab: button
-//         });
-//     });
-// });
+const buttonlist = ["character","combat"];
+buttonlist.forEach(button => {
+    on(`clicked:${button}`, function() {
+        setAttrs({
+            sheetTab: button
+        });
+    });
+});
 
 export default {
   name: 'App',
@@ -1127,7 +1127,7 @@ label {
 
 /* show the selected tab */
 .charsheet .sheet-tabstoggle[value="character"] ~ div.sheet-character,
-.charsheet .sheet-tabstoggle[value="combat"] ~ div.sheet-combat {
+.charsheet .sheet-tabstoggle[value="journal"] ~ div.sheet-journal {
     display: block;
 }
 </style>
