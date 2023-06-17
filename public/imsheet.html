@@ -1353,23 +1353,43 @@
     const myArray = characteristic.split("|");
     const selected_characteristic = myArray[0];
     const selected_characteristic_name = myArray[1];
-    console.log(selected_characteristic);
-    console.log(selected_characteristic_name);
-    startRoll("&{template:dh2ed} [[[[floor((@{"+selected_characteristic+"} +[[ ?{Aim | Half aim (+10),+10| No aim (+0),+0 | Full aim (+20),+20} + ?{Range | Point Blank (+30),+30 | Short Range (+10),+10 | Standard range (+0),+0 | Long Range (-10),-10 | Extreme Range (-30),-30} + ?{Rate of Fire/Attack Type|Standard (+10),+10 | Semi auto (+0),+0 | Full Auto (-10),-10 | Called Shot (-20),-20 | Suppressing Fire (-20),-20} + [[?{Modifier|0}]] ]])/10))]]-[[floor([[1d100]]/10)]]]][[@{"+selected_characteristic+"}+?{Modifier|0}]] {{name="+selected_characteristic_name+"}}{{roll= $[[3]] }}{{degrees=$[[5]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[1]]}}{{target=$[[1]]}}", (results) => {
 
-      const skill = results.results.skill.result;
-      const modifier = results.results.modifier.result;
-      const target = parseInt(skill)+parseInt(modifier);
+    //none,advantage,advantage+10,advantage+20,disadvantage,disadvantage-10,disadvantage-20
+    let advantage = 'none';
 
-      finishRoll(
-          results.rollId,
-          {
-              target: target
-          }
-      );
-    });
+    if (selected_characteristic == 'current_bs' || selected_characteristic == 'current_ws') { //roll ranged attack
+      startRoll("&{template:dh2ed} [[[[floor((@{"+selected_characteristic+"} +[[ ?{Advantage | None,+0 | Advantage,+0 | Advantage (+10),+10 | Advantage (+20),+20 | Disadvantage,-0  | Disadvantage (-10),-10 | Disadvantage (-20),-20} + ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])/10))]]-[[floor([[1d100]]/10)]]]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[3]] }}{{degrees=$[[5]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[1]]}}{{target=$[[1]]}}", (results) => {
+        console.log(selected_characteristic);
+        console.log(selected_characteristic_name);
 
-    
+        let skill = results.results.skill.result;
+        let modifier = results.results.modifier.result;
+        let target = parseInt(skill)+parseInt(modifier);
+
+        finishRoll(
+            results.rollId,
+            {
+                target: target
+            }
+        );
+      });
+    } else { //roll other characteristic
+      startRoll("&{template:dh2ed} [[[[floor((@{"+selected_characteristic+"} +[[ ?{Advantage | None,+0 | Advantage,+0 | Advantage (+10),+10 | Advantage (+20),+20 | Disadvantage,-0  | Disadvantage (-10),-10 | Disadvantage (-20),-20} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])/10))]]-[[floor([[1d100]]/10)]]]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[3]] }}{{degrees=$[[5]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[1]]}}{{target=$[[1]]}}", (results) => {
+        console.log(selected_characteristic);
+        console.log(selected_characteristic_name);
+
+        let skill = results.results.skill.result;
+        let modifier = results.results.modifier.result;
+        let target = parseInt(skill)+parseInt(modifier);
+
+        finishRoll(
+            results.rollId,
+            {
+                target: target
+            }
+        );
+      });
+    }
 });
 
 on('clicked:skill', (info) => {
