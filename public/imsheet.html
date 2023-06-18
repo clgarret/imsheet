@@ -173,31 +173,85 @@
 
             <div>Advances</div>
             <div class="inputitem">
-              <input class="textinput smallinput" type="text" id="advances_ws" name="attr_advances_ws">
+              <select class="width100" id="advances_ws" name="attr_advances_ws">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
             </div>
             <div class="inputitem">
-              <input class="textinput smallinput" type="text" id="advances_bs" name="attr_advances_bs">
+              <select class="width100" id="advances_bs" name="attr_advances_bs">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
             </div>
             <div class="inputitem">
-              <input class="textinput smallinput" type="text" id="advances_str" name="attr_advances_str">
+              <select class="width100" id="advances_str" name="attr_advances_str">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
             </div>
             <div class="inputitem">
-              <input class="textinput smallinput" type="text" id="advances_tgh" name="attr_advances_tgh">
+              <select class="width100" id="advances_tgh" name="attr_advances_tgh">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
             </div>
             <div class="inputitem">
-              <input class="textinput smallinput" type="text" id="advances_ag" name="attr_advances_ag">
+              <select class="width100" id="advances_ag" name="attr_advances_ag">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
             </div>
             <div class="inputitem">
-              <input class="textinput smallinput" type="text" id="advances_int" name="attr_advances_int">
+              <select class="width100" id="advances_int" name="attr_advances_int">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
             </div>
             <div class="inputitem">
-              <input class="textinput smallinput" type="text" id="advances_per" name="attr_advances_per">
+              <select class="width100" id="advances_per" name="attr_advances_per">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
             </div>
             <div class="inputitem">
-              <input class="textinput smallinput" type="text" id="advances_wil" name="attr_advances_wil">
+              <select class="width100" id="advances_wil" name="attr_advances_wil">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
             </div>
             <div class="inputitem">
-              <input class="textinput smallinput" type="text" id="advances_fel" name="attr_advances_fel">
+              <select class="width100" id="advances_fel" name="attr_advances_fel">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
             </div>
 
             <div>Current</div>
@@ -274,9 +328,10 @@
     <div class="row fullwidth">
       <div class="column">
         <div class="row">
+          <input type="hidden" id="specialisation_name" name="attr_specialisation_name">
           <div class="skillstable">
             <div>Skill</div>
-            <div>Characteristic</div>
+            <div>Char</div>
             <div>Adv (+5 each)</div>
             <div>Total</div>
 
@@ -286,16 +341,32 @@
               </button>
             </div>
             <div>STR</div>
-            <div><input class="textinput" type="text" id="skill_adv_athletics" name="attr_skill_adv_athletics"></div>
-            <div><input class="textinput" type="text" id="skill_athletics" name="attr_skill_athletics"></div>
-
+            <div>
+              <select class="width100" id="skill_adv_athletics" name="attr_skill_adv_athletics">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
+            <div>
+              <input class="textinput" type="text" id="skill_athletics" name="attr_skill_athletics"></div>
             <div>
               <button type="action" value="skill_awareness|Awareness|skill" name="act_imroll">
                 AWARENESS
               </button>
             </div>
             <div>PER</div>
-            <div><input class="textinput" type="text" id="skill_adv_awareness" name="attr_skill_adv_awareness"></div>
+            <div>
+              <select class="width100" id="skill_adv_awareness" name="attr_skill_adv_awareness">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_awareness" name="attr_skill_awareness"></div>
 
             <div>
@@ -304,7 +375,15 @@
               </button>
             </div>
             <div>AG</div>
-            <div><input class="textinput" type="text" id="skill_adv_dexterity" name="attr_skill_adv_dexterity"></div>
+            <div>
+              <select class="width100" id="skill_adv_dexterity" name="attr_skill_adv_dexterity">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_dexterity" name="attr_skill_dexterity"></div>
 
             <div>
@@ -313,7 +392,15 @@
               </button>
             </div>
             <div>WIL</div>
-            <div><input class="textinput" type="text" id="skill_adv_discipline" name="attr_skill_adv_discipline"></div>
+            <div>
+              <select class="width100" id="skill_adv_discipline" name="attr_skill_adv_discipline">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_discipline" name="attr_skill_discipline"></div>
 
             <div>
@@ -322,7 +409,15 @@
               </button>
             </div>
             <div>TGH</div>
-            <div><input class="textinput" type="text" id="skill_adv_fortitude" name="attr_skill_adv_fortitude"></div>
+            <div>
+              <select class="width100" id="skill_adv_fortitude" name="attr_skill_adv_fortitude">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_fortitude" name="attr_skill_fortitude"></div>
 
             <div>
@@ -331,7 +426,15 @@
               </button>
             </div>
             <div>PER</div>
-            <div><input class="textinput" type="text" id="skill_adv_intuition" name="attr_skill_adv_intuition"></div>
+            <div>
+              <select class="width100" id="skill_adv_intuition" name="attr_skill_adv_intuition">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_intuition" name="attr_skill_intuition"></div>
 
             <div>
@@ -340,7 +443,15 @@
               </button>
             </div>
             <div>INT</div>
-            <div><input class="textinput" type="text" id="skill_adv_linguistics" name="attr_skill_adv_linguistics"></div>
+            <div>
+              <select class="width100" id="skill_adv_linguistics" name="attr_skill_adv_linguistics">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_linguistics" name="attr_skill_linguistics"></div>
 
             <div>
@@ -349,7 +460,15 @@
               </button>
             </div>
             <div>INT</div>
-            <div><input class="textinput" type="text" id="skill_adv_logic" name="attr_skill_adv_logic"></div>
+            <div>
+              <select class="width100" id="skill_adv_logic" name="attr_skill_adv_logic">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_logic" name="attr_skill_logic"></div>
 
             <div>
@@ -358,7 +477,15 @@
               </button>
             </div>
             <div>INT</div>
-            <div><input class="textinput" type="text" id="skill_adv_lore" name="attr_skill_adv_lore"></div>
+            <div>
+              <select class="width100" id="skill_adv_lore" name="attr_skill_adv_lore">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_lore" name="attr_skill_lore"></div>
 
             <div>
@@ -367,7 +494,15 @@
               </button>
             </div>
             <div>INT</div>
-            <div><input class="textinput" type="text" id="skill_adv_medicae" name="attr_skill_adv_medicae"></div>
+            <div>
+              <select class="width100" id="skill_adv_medicae" name="attr_skill_adv_medicae">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_medicae" name="attr_skill_medicae"></div>
           </div>
         </div>
@@ -377,7 +512,7 @@
         <div class="row">
           <div class="skillstable">
             <div>Skill</div>
-            <div>Characteristic</div>
+            <div>Char</div>
             <div>Adv (+5 each)</div>
             <div>Total</div>
 
@@ -387,16 +522,32 @@
               </button>
             </div>
             <div>WS</div>
-            <div><input class="textinput" type="text" id="skill_adv_melee" name="attr_skill_adv_melee"></div>
+            <div>
+              <select class="width100" id="skill_adv_melee" name="attr_skill_adv_melee">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_melee" name="attr_skill_melee"></div>
 
             <div>
               <button type="action" value="skill_navigation|Navigation|skill" name="act_imroll">
-                Navigation
+                NAVIGATION
               </button>
             </div>
             <div>INT</div>
-            <div><input class="textinput" type="text" id="skill_adv_navigation" name="attr_skill_adv_navigation"></div>
+            <div>
+              <select class="width100" id="skill_adv_navigation" name="attr_skill_adv_navigation">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_navigation" name="attr_skill_navigation"></div>
 
             <div>
@@ -405,7 +556,15 @@
               </button>
             </div>
             <div>WIL</div>
-            <div><input class="textinput" type="text" id="skill_adv_presence" name="attr_skill_adv_presence"></div>
+            <div>
+              <select class="width100" id="skill_adv_presence" name="attr_skill_adv_presence">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_presence" name="attr_skill_presence"></div>
 
             <div>
@@ -414,7 +573,15 @@
               </button>
             </div>
             <div>AG</div>
-            <div><input class="textinput" type="text" id="skill_adv_piloting" name="attr_skill_adv_piloting"></div>
+            <div>
+              <select class="width100" id="skill_adv_piloting" name="attr_skill_adv_piloting">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_piloting" name="attr_skill_piloting"></div>
 
             <div>
@@ -423,7 +590,15 @@
               </button>
             </div>
             <div>WIL</div>
-            <div><input class="textinput" type="text" id="skill_adv_psychic_mastery" name="attr_skill_adv_psychic_mastery"></div>
+            <div>
+              <select class="width100" id="skill_adv_psychic_mastery" name="attr_skill_adv_psychic_mastery">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>            
             <div><input class="textinput" type="text" id="skill_psychic_mastery" name="attr_skill_psychic_mastery"></div>
 
             <div>
@@ -432,7 +607,15 @@
               </button>
             </div>
             <div>BS</div>
-            <div><input class="textinput" type="text" id="skill_adv_ranged" name="attr_skill_adv_ranged"></div>
+            <div>
+              <select class="width100" id="skill_adv_ranged" name="attr_skill_adv_ranged">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_ranged" name="attr_skill_ranged"></div>
 
             <div>
@@ -441,7 +624,15 @@
               </button>
             </div>
             <div>FEL</div>
-            <div><input class="textinput" type="text" id="skill_adv_rapport" name="attr_skill_adv_rapport"></div>
+            <div>
+              <select class="width100" id="skill_adv_rapport" name="attr_skill_adv_rapport">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_rapport" name="attr_skill_rapport"></div>
 
             <div>
@@ -450,7 +641,15 @@
               </button>
             </div>
             <div>AG</div>
-            <div><input class="textinput" type="text" id="skill_adv_reflexes" name="attr_skill_adv_reflexes"></div>
+            <div>
+              <select class="width100" id="skill_adv_reflexes" name="attr_skill_adv_reflexes">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_reflexes" name="attr_skill_reflexes"></div>
 
             <div>
@@ -459,7 +658,15 @@
               </button>
             </div>
             <div>AG</div>
-            <div><input class="textinput" type="text" id="skill_adv_stealth" name="attr_skill_adv_stealth"></div>
+            <div>
+              <select class="width100" id="skill_adv_stealth" name="attr_skill_adv_stealth">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_stealth" name="attr_skill_stealth"></div>
 
             <div>
@@ -468,7 +675,15 @@
               </button>
             </div>
             <div>INT</div>
-            <div><input class="textinput" type="text" id="skill_adv_tech" name="attr_skill_adv_tech"></div>
+            <div>
+              <select class="width100" id="skill_adv_tech" name="attr_skill_adv_tech">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
             <div><input class="textinput" type="text" id="skill_tech" name="attr_skill_tech"></div>
           </div>
         </div>
@@ -482,56 +697,380 @@
             <div>Adv (+5 each)</div>
             <div>Total</div>
 
-            <div><input class="textinput" type="text" id="specialization_1" name="attr_specialization_1"></div>
-            <div><input class="textinput" type="text" id="specialization_1_skill" name="attr_specialization_1_skill"></div>
-            <div><input class="textinput" type="text" id="specialization_1_adv" name="attr_specialization_1_adv"></div>
-            <div><input class="textinput" type="text" id="specialization_1_total" name="attr_specialization_1_total"></div>
+            <div>
+              <input class="textinput" type="text" id="specialisation1" name="attr_specialisation1">
+              <button type="action" value="specialisation1|Specialisation|specialisation" name="act_imroll">
+                *
+              </button>
+            </div>
+            <div>
+              <select class="width100" id="specialisation1_skill" name="attr_specialisation1_skill">
+                <option value=""></option>
+                <option value="athletics">Athletics</option>
+                <option value="awareness">Awareness</option>
+                <option value="dexterity">Dexterity</option>
+                <option value="discipline">Discipline</option>
+                <option value="fortitude">Fortitude</option>
+                <option value="intuition">Intuition</option>
+                <option value="linguistics">Linguistics</option>
+                <option value="logic">Logic</option>
+                <option value="lore">Lore</option>
+                <option value="medicae">Medicae</option>
+                <option value="melee">Melee</option>
+                <option value="navigation">Navigation</option>
+                <option value="presence">Presence</option>
+                <option value="piloting">Piloting</option>
+                <option value="psychic_mastery">Psychic Mastery</option>
+                <option value="ranged">Ranged</option>
+                <option value="rapport">Rapport</option>
+                <option value="reflexes">Reflexes</option>
+                <option value="stealth">Stealth</option>
+                <option value="tech">Tech</option>
+              </select>
+            </div>
+            <div>
+              <select class="width100" id="skill_adv_specialisation1_adv" name="attr_skill_adv_specialisation1_adv">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
+            <div><input class="textinput" type="text" id="specialisation1_total" name="attr_specialisation1_total"></div>
 
+            <div><input class="textinput" type="text" id="specialisation2" name="attr_specialisation2"></div>
+            <div>
+              <select class="width100" id="specialisation2_skill" name="attr_specialisation2_skill">
+                <option value=""></option>
+                <option value="athletics">Athletics</option>
+                <option value="awareness">Awareness</option>
+                <option value="dexterity">Dexterity</option>
+                <option value="discipline">Discipline</option>
+                <option value="fortitude">Fortitude</option>
+                <option value="intuition">Intuition</option>
+                <option value="linguistics">Linguistics</option>
+                <option value="logic">Logic</option>
+                <option value="lore">Lore</option>
+                <option value="medicae">Medicae</option>
+                <option value="melee">Melee</option>
+                <option value="navigation">Navigation</option>
+                <option value="presence">Presence</option>
+                <option value="piloting">Piloting</option>
+                <option value="psychic_mastery">Psychic Mastery</option>
+                <option value="ranged">Ranged</option>
+                <option value="rapport">Rapport</option>
+                <option value="reflexes">Reflexes</option>
+                <option value="stealth">Stealth</option>
+                <option value="tech">Tech</option>
+              </select>
+            </div>
+            <div>
+              <select class="width100" id="skill_adv_specialisation2_adv" name="attr_skill_adv_specialisation2_adv">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
+            <div><input class="textinput" type="text" id="specialisation2_total" name="attr_specialisation2_total"></div>
 
-            <div><input class="textinput" type="text" id="specialization_2" name="attr_specialization_2"></div>
-            <div><input class="textinput" type="text" id="specialization_2_skill" name="attr_specialization_2_skill"></div>
-            <div><input class="textinput" type="text" id="specialization_2_adv" name="attr_specialization_2_adv"></div>
-            <div><input class="textinput" type="text" id="specialization_2_total" name="attr_specialization_2_total"></div>
+            <div><input class="textinput" type="text" id="specialisation3" name="attr_specialisation3"></div>
+            <div>
+              <select class="width100" id="specialisation3_skill" name="attr_specialisation3_skill">
+                <option value=""></option>
+                <option value="athletics">Athletics</option>
+                <option value="awareness">Awareness</option>
+                <option value="dexterity">Dexterity</option>
+                <option value="discipline">Discipline</option>
+                <option value="fortitude">Fortitude</option>
+                <option value="intuition">Intuition</option>
+                <option value="linguistics">Linguistics</option>
+                <option value="logic">Logic</option>
+                <option value="lore">Lore</option>
+                <option value="medicae">Medicae</option>
+                <option value="melee">Melee</option>
+                <option value="navigation">Navigation</option>
+                <option value="presence">Presence</option>
+                <option value="piloting">Piloting</option>
+                <option value="psychic_mastery">Psychic Mastery</option>
+                <option value="ranged">Ranged</option>
+                <option value="rapport">Rapport</option>
+                <option value="reflexes">Reflexes</option>
+                <option value="stealth">Stealth</option>
+                <option value="tech">Tech</option>
+              </select>
+            </div>
+            <div>
+              <select class="width100" id="skill_adv_specialisation3_adv" name="attr_skill_adv_specialisation3_adv">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
+            <div><input class="textinput" type="text" id="specialisation3_total" name="attr_specialisation3_total"></div>
 
-            <div><input class="textinput" type="text" id="specialization_3" name="attr_specialization_3"></div>
-            <div><input class="textinput" type="text" id="specialization_3_skill" name="attr_specialization_3_skill"></div>
-            <div><input class="textinput" type="text" id="specialization_3_adv" name="attr_specialization_3_adv"></div>
-            <div><input class="textinput" type="text" id="specialization_3_total" name="attr_specialization_3_total"></div>
+            <div><input class="textinput" type="text" id="specialisation4" name="attr_specialisation4"></div>
+            <div>
+              <select class="width100" id="specialisation4_skill" name="attr_specialisation4_skill">
+                <option value=""></option>
+                <option value="athletics">Athletics</option>
+                <option value="awareness">Awareness</option>
+                <option value="dexterity">Dexterity</option>
+                <option value="discipline">Discipline</option>
+                <option value="fortitude">Fortitude</option>
+                <option value="intuition">Intuition</option>
+                <option value="linguistics">Linguistics</option>
+                <option value="logic">Logic</option>
+                <option value="lore">Lore</option>
+                <option value="medicae">Medicae</option>
+                <option value="melee">Melee</option>
+                <option value="navigation">Navigation</option>
+                <option value="presence">Presence</option>
+                <option value="piloting">Piloting</option>
+                <option value="psychic_mastery">Psychic Mastery</option>
+                <option value="ranged">Ranged</option>
+                <option value="rapport">Rapport</option>
+                <option value="reflexes">Reflexes</option>
+                <option value="stealth">Stealth</option>
+                <option value="tech">Tech</option>
+              </select>
+            </div>
+            <div>
+              <select class="width100" id="skill_adv_specialisation4_adv" name="attr_skill_adv_specialisation4_adv">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
+            <div><input class="textinput" type="text" id="specialisation4_total" name="attr_specialisation4_total"></div>
 
-            <div><input class="textinput" type="text" id="specialization_4" name="attr_specialization_4"></div>
-            <div><input class="textinput" type="text" id="specialization_4_skill" name="attr_specialization_4_skill"></div>
-            <div><input class="textinput" type="text" id="specialization_4_adv" name="attr_specialization_4_adv"></div>
-            <div><input class="textinput" type="text" id="specialization_4_total" name="attr_specialization_4_total"></div>
+            <div><input class="textinput" type="text" id="specialisation5" name="attr_specialisation5"></div>
+            <div>
+              <select class="width100" id="specialisation5_skill" name="attr_specialisation5_skill">
+                <option value=""></option>
+                <option value="athletics">Athletics</option>
+                <option value="awareness">Awareness</option>
+                <option value="dexterity">Dexterity</option>
+                <option value="discipline">Discipline</option>
+                <option value="fortitude">Fortitude</option>
+                <option value="intuition">Intuition</option>
+                <option value="linguistics">Linguistics</option>
+                <option value="logic">Logic</option>
+                <option value="lore">Lore</option>
+                <option value="medicae">Medicae</option>
+                <option value="melee">Melee</option>
+                <option value="navigation">Navigation</option>
+                <option value="presence">Presence</option>
+                <option value="piloting">Piloting</option>
+                <option value="psychic_mastery">Psychic Mastery</option>
+                <option value="ranged">Ranged</option>
+                <option value="rapport">Rapport</option>
+                <option value="reflexes">Reflexes</option>
+                <option value="stealth">Stealth</option>
+                <option value="tech">Tech</option>
+              </select>
+            </div>
+            <div>
+              <select class="width100" id="skill_adv_specialisation5_adv" name="attr_skill_adv_specialisation5_adv">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
+            <div><input class="textinput" type="text" id="specialisation5_total" name="attr_specialisation5_total"></div>
 
-            <div><input class="textinput" type="text" id="specialization_5" name="attr_specialization_5"></div>
-            <div><input class="textinput" type="text" id="specialization_5_skill" name="attr_specialization_5_skill"></div>
-            <div><input class="textinput" type="text" id="specialization_5_adv" name="attr_specialization_5_adv"></div>
-            <div><input class="textinput" type="text" id="specialization_5_total" name="attr_specialization_5_total"></div>
+            <div><input class="textinput" type="text" id="specialisation6" name="attr_specialisation6"></div>
+            <div>
+              <select class="width100" id="specialisation6_skill" name="attr_specialisation6_skill">
+                <option value=""></option>
+                <option value="athletics">Athletics</option>
+                <option value="awareness">Awareness</option>
+                <option value="dexterity">Dexterity</option>
+                <option value="discipline">Discipline</option>
+                <option value="fortitude">Fortitude</option>
+                <option value="intuition">Intuition</option>
+                <option value="linguistics">Linguistics</option>
+                <option value="logic">Logic</option>
+                <option value="lore">Lore</option>
+                <option value="medicae">Medicae</option>
+                <option value="melee">Melee</option>
+                <option value="navigation">Navigation</option>
+                <option value="presence">Presence</option>
+                <option value="piloting">Piloting</option>
+                <option value="psychic_mastery">Psychic Mastery</option>
+                <option value="ranged">Ranged</option>
+                <option value="rapport">Rapport</option>
+                <option value="reflexes">Reflexes</option>
+                <option value="stealth">Stealth</option>
+                <option value="tech">Tech</option>
+              </select>
+            </div>
+            <div>
+              <select class="width100" id="skill_adv_specialisation6_adv" name="attr_skill_adv_specialisation6_adv">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
+            <div><input class="textinput" type="text" id="specialisation6_total" name="attr_specialisation6_total"></div>
 
-            <div><input class="textinput" type="text" id="specialization_6" name="attr_specialization_6"></div>
-            <div><input class="textinput" type="text" id="specialization_6_skill" name="attr_specialization_6_skill"></div>
-            <div><input class="textinput" type="text" id="specialization_6_adv" name="attr_specialization_6_adv"></div>
-            <div><input class="textinput" type="text" id="specialization_6_total" name="attr_specialization_6_total"></div>
+            <div><input class="textinput" type="text" id="specialisation7" name="attr_specialisation7"></div>
+            <div>
+              <select class="width100" id="specialisation7_skill" name="attr_specialisation7_skill">
+                <option value=""></option>
+                <option value="athletics">Athletics</option>
+                <option value="awareness">Awareness</option>
+                <option value="dexterity">Dexterity</option>
+                <option value="discipline">Discipline</option>
+                <option value="fortitude">Fortitude</option>
+                <option value="intuition">Intuition</option>
+                <option value="linguistics">Linguistics</option>
+                <option value="logic">Logic</option>
+                <option value="lore">Lore</option>
+                <option value="medicae">Medicae</option>
+                <option value="melee">Melee</option>
+                <option value="navigation">Navigation</option>
+                <option value="presence">Presence</option>
+                <option value="piloting">Piloting</option>
+                <option value="psychic_mastery">Psychic Mastery</option>
+                <option value="ranged">Ranged</option>
+                <option value="rapport">Rapport</option>
+                <option value="reflexes">Reflexes</option>
+                <option value="stealth">Stealth</option>
+                <option value="tech">Tech</option>
+              </select>
+            </div>
+            <div>
+              <select class="width100" id="skill_adv_specialisation7_adv" name="attr_skill_adv_specialisation7_adv">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
+            <div><input class="textinput" type="text" id="specialisation7_total" name="attr_specialisation7_total"></div>
 
-            <div><input class="textinput" type="text" id="specialization_7" name="attr_specialization_7"></div>
-            <div><input class="textinput" type="text" id="specialization_7_skill" name="attr_specialization_7_skill"></div>
-            <div><input class="textinput" type="text" id="specialization_7_adv" name="attr_specialization_7_adv"></div>
-            <div><input class="textinput" type="text" id="specialization_7_total" name="attr_specialization_7_total"></div>
+            <div><input class="textinput" type="text" id="specialisation8" name="attr_specialisation8"></div>
+            <div>
+              <select class="width100" id="specialisation8_skill" name="attr_specialisation8_skill">
+                <option value=""></option>
+                <option value="athletics">Athletics</option>
+                <option value="awareness">Awareness</option>
+                <option value="dexterity">Dexterity</option>
+                <option value="discipline">Discipline</option>
+                <option value="fortitude">Fortitude</option>
+                <option value="intuition">Intuition</option>
+                <option value="linguistics">Linguistics</option>
+                <option value="logic">Logic</option>
+                <option value="lore">Lore</option>
+                <option value="medicae">Medicae</option>
+                <option value="melee">Melee</option>
+                <option value="navigation">Navigation</option>
+                <option value="presence">Presence</option>
+                <option value="piloting">Piloting</option>
+                <option value="psychic_mastery">Psychic Mastery</option>
+                <option value="ranged">Ranged</option>
+                <option value="rapport">Rapport</option>
+                <option value="reflexes">Reflexes</option>
+                <option value="stealth">Stealth</option>
+                <option value="tech">Tech</option>
+              </select>
+            </div>
+            <div>
+              <select class="width100" id="skill_adv_specialisation8_adv" name="attr_skill_adv_specialisation8_adv">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
+            <div><input class="textinput" type="text" id="specialisation8_total" name="attr_specialisation8_total"></div>
 
-            <div><input class="textinput" type="text" id="specialization_8" name="attr_specialization_8"></div>
-            <div><input class="textinput" type="text" id="specialization_8_skill" name="attr_specialization_8_skill"></div>
-            <div><input class="textinput" type="text" id="specialization_8_adv" name="attr_specialization_8_adv"></div>
-            <div><input class="textinput" type="text" id="specialization_8_total" name="attr_specialization_8_total"></div>
+            <div><input class="textinput" type="text" id="specialisation9" name="attr_specialisation9"></div>
+            <div>
+              <select class="width100" id="specialisation9_skill" name="attr_specialisation9_skill">
+                <option value=""></option>
+                <option value="athletics">Athletics</option>
+                <option value="awareness">Awareness</option>
+                <option value="dexterity">Dexterity</option>
+                <option value="discipline">Discipline</option>
+                <option value="fortitude">Fortitude</option>
+                <option value="intuition">Intuition</option>
+                <option value="linguistics">Linguistics</option>
+                <option value="logic">Logic</option>
+                <option value="lore">Lore</option>
+                <option value="medicae">Medicae</option>
+                <option value="melee">Melee</option>
+                <option value="navigation">Navigation</option>
+                <option value="presence">Presence</option>
+                <option value="piloting">Piloting</option>
+                <option value="psychic_mastery">Psychic Mastery</option>
+                <option value="ranged">Ranged</option>
+                <option value="rapport">Rapport</option>
+                <option value="reflexes">Reflexes</option>
+                <option value="stealth">Stealth</option>
+                <option value="tech">Tech</option>
+              </select>
+            </div>
+            <div>
+              <select class="width100" id="skill_adv_specialisation9_adv" name="attr_skill_adv_specialisation9_adv">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
+            <div><input class="textinput" type="text" id="specialisation9_total" name="attr_specialisation9_total"></div>
 
-            <div><input class="textinput" type="text" id="specialization_9" name="attr_specialization_9"></div>
-            <div><input class="textinput" type="text" id="specialization_9_skill" name="attr_specialization_9_skill"></div>
-            <div><input class="textinput" type="text" id="specialization_9_adv" name="attr_specialization_9_adv"></div>
-            <div><input class="textinput" type="text" id="specialization_9_total" name="attr_specialization_9_total"></div>
-
-            <div><input class="textinput" type="text" id="specialization_10" name="attr_specialization_10"></div>
-            <div><input class="textinput" type="text" id="specialization_10_skill" name="attr_specialization_10_skill"></div>
-            <div><input class="textinput" type="text" id="specialization_10_adv" name="attr_specialization_10_adv"></div>
-            <div><input class="textinput" type="text" id="specialization_10_total" name="attr_specialization_10_total"></div>
+            <div><input class="textinput" type="text" id="specialisation10" name="attr_specialisation10"></div>
+            <div>
+              <select class="width100" id="specialisation10_skill" name="attr_specialisation10_skill">
+                <option value=""></option>
+                <option value="athletics">Athletics</option>
+                <option value="awareness">Awareness</option>
+                <option value="dexterity">Dexterity</option>
+                <option value="discipline">Discipline</option>
+                <option value="fortitude">Fortitude</option>
+                <option value="intuition">Intuition</option>
+                <option value="linguistics">Linguistics</option>
+                <option value="logic">Logic</option>
+                <option value="lore">Lore</option>
+                <option value="medicae">Medicae</option>
+                <option value="melee">Melee</option>
+                <option value="navigation">Navigation</option>
+                <option value="presence">Presence</option>
+                <option value="piloting">Piloting</option>
+                <option value="psychic_mastery">Psychic Mastery</option>
+                <option value="ranged">Ranged</option>
+                <option value="rapport">Rapport</option>
+                <option value="reflexes">Reflexes</option>
+                <option value="stealth">Stealth</option>
+                <option value="tech">Tech</option>
+              </select>
+            </div>
+            <div>
+              <select class="width100" id="skill_adv_specialisation10_adv" name="attr_skill_adv_specialisation10_adv">
+                <option value="0">0</option>
+                <option value="5">+5</option>
+                <option value="10">+10</option>
+                <option value="15">+15</option>
+                <option value="20">+20</option>
+              </select>
+            </div>
+            <div><input class="textinput" type="text" id="specialisation10_total" name="attr_specialisation10_total"></div>
           </div>
         </div>
       </div>
@@ -1415,15 +1954,26 @@
     const selected_characteristic_name = myArray[1];
     const selected_rolltype = myArray[2];
 
+    console.log(selected_characteristic);
+    console.log(selected_characteristic_name);
+    console.log(selected_rolltype);
+
     let roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_characteristic+"} +[[ ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[2]] }}{{degrees1=$[[6]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[5]]}}{{advantage=$[[0]]}}{{reversedroll=$[[1]]}}{{target=$[[3]]}}{{degrees2=$[[4]]}}";
     if (selected_rolltype == 'skill') {
       roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_characteristic+"} +[[ ?{Difficulty | Very Easy (+60),+60| Easy (+40),+40 | Routine (+20),+20 | Challenging (+0),+0 | Difficult (-10),-10 | Hard (-20),-20 | Very Hard (-30),-30} + ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[2]] }}{{degrees1=$[[6]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[5]]}}{{advantage=$[[0]]}}{{reversedroll=$[[1]]}}{{target=$[[3]]}}{{degrees2=$[[4]]}}";
+    } else if (selected_rolltype == 'specialisation') {
+      getAttrs([selected_characteristic], function(values) {
+        let specialisation_name = values[selected_characteristic];
+        setAttrs({                            
+          "specialisation_name": specialisation_name
+        });
+      });
+
+      let selected_specialisation = selected_characteristic+"_total";
+      roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_specialisation+"} +[[ ?{Difficulty | Very Easy (+60),+60| Easy (+40),+40 | Routine (+20),+20 | Challenging (+0),+0 | Difficult (-10),-10 | Hard (-20),-20 | Very Hard (-30),-30} + ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[@{"+selected_specialisation+"}]] {{name=@{specialisation_name} }}{{roll= $[[2]] }}{{degrees1=$[[6]]}}{{skill=[[@{"+selected_specialisation+"}]]}}{{modifier=$[[5]]}}{{advantage=$[[0]]}}{{reversedroll=$[[1]]}}{{target=$[[3]]}}{{degrees2=$[[4]]}}";
     }
 
     startRoll(roll_string, (results) => {
-      console.log(selected_characteristic);
-      console.log(selected_characteristic_name);
-
       let skill = results.results.skill.result;
       let modifier = parseInt(results.results.modifier.result);
       let advantage = results.results.advantage.result;
