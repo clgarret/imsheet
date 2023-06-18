@@ -1043,6 +1043,11 @@
 <!--Roll Template-->
 <rolltemplate class="sheet-rolltemplate-dh2ed">
 	<table>
+    <tr>
+			<th colspan="2">
+				<img alt="spacer" src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Dark_Heresy_2ed/img/spacer.png"
+					class="sheet-rolltemplate-spacer"></th>
+		</tr>
 		<tr>
 			<th colspan="2" class="sheet-title">{{name}}</th>
 		</tr>
@@ -1057,7 +1062,7 @@
 		</tr>
     <tr>
 			<td><span class="sheet-tcat">Modifier: </span></td>
-			<td><span class="sheet-inlinerollresult">{{modifier}}</span></td>
+			<td><span class="sheet-inlinerollresult">{{computed::modifier}}</span></td>
 		</tr>
     <tr class="sheet-topline">
 			<th colspan="2"><span></span></th>
@@ -1066,31 +1071,6 @@
 			<td><span class="sheet-tcat">Target: </span></td>
 			<td><span class="sheet-inlinerollresult">{{computed::target}}</span></td>
 		</tr>
-		{{#aim}}
-		<tr>
-			<td><span class="sheet-tcat">Aim: </span></td>
-			<td><span class="sheet-inlinerollresult">{{aim}}</span></td>
-		</tr>
-		{{/aim}}
-		{{#range}}
-		<tr>
-			<td><span class="sheet-tcat">Range: </span></td>
-			<td><span class="sheet-inlinerollresult">{{range}}</span></td>
-		</tr>
-		{{/range}}
-		{{#attacktype}}
-		<tr>
-			<td><span class="sheet-tcat">Attack Type: </span></td>
-			<td><span class="sheet-inlinerollresult">{{attacktype}}</span></td>
-		</tr>
-		{{/attacktype}}
-		{{#threshold}}
-		<tr>
-			<td><span class="sheet-tcat">Threshold: </span></td>
-			<td><span class="sheet-inlinerollresult">{{threshold}}</span></td>
-		</tr>
-		{{/threshold}}
-		{{#roll}}
 		<tr>
 			<th colspan="2">
 				<img alt="spacer" src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Dark_Heresy_2ed/img/spacer.png"
@@ -1101,56 +1081,209 @@
 			<td><span class="sheet-tcat">dice roll: </span></td>
 			<td><span class="sheet-inlinerollresult">{{roll}}</span></td>
 		</tr>
-		{{/roll}}
 
-		{{#range}}
-		{{#rollGreater() roll 95}}
+    <!-- roll with advantage -->
+    {{#rollGreater() advantage 0}}
 		<tr>
-			<th colspan="2">
-				<img alt="spacer" src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Dark_Heresy_2ed/img/spacer.png"
-					class="sheet-rolltemplate-spacer sheet-invert">
-			</th>
+			<td><span class="sheet-tcat">dice roll reversed (advantage): </span></td>
+			<td><span class="sheet-inlinerollresult">{{computed::reversedroll}}</span></td>
 		</tr>
-		<tr class="sheet-failure">
-			<td><span class="sheet-tcat" >Check for: </span></td>
-			<td><span class="sheet-inlinerollresult"> Jam </span></td>
-		</tr>
-		{{/rollGreater() roll 95}}
-		{{/range}}
+      <!-- roll is greater than reversedroll -->
+      {{#rollGreater() degrees1 degrees2}}
+        {{#rollGreater() degrees1 0}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            UsingA : {{computed::degrees1}} SL -- Discarding: ({{computed::degrees2}} SL)
+            <br><span>Success with {{computed::degrees1}} </span> <span>SL </span>
+          </th>
+        </tr>
+        {{/rollGreater() degrees1 0}}
 
-		{{#rollGreater() degrees 0}}
-		<tr class="sheet-success">
-			<th colspan="2">
-				 <span>+</span> {{degrees}} <span>SL </span>
-			</th>
-		</tr>
-		{{/rollGreater() degrees 0}}
+        {{#rollTotal() degrees1 0}}
+        {{#^rollLess() target roll}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            <span>Success with 0 </span> <span>SL </span>
+          </th>
+        </tr>
+        {{/^rollLess() target roll}}
+        {{#rollLess() target roll}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            <span>Failure with 0</span> <span>SL </span> 
+          </th>
+        </tr>
+        {{/rollLess() target roll}}
+        {{/rollTotal() degrees1 0}}
+    
+        {{#rollLess() degrees1 0}}
+        <tr class="sheet-failure">
+          <th colspan="2">
+            UsingB : {{computed::degrees1}} SL -- Discarding: ({{computed::degrees2}} SL)
+            <br><span>Failure</span> with {{computed::degrees1}} <span>SL</span>
+          </th>
+        </tr>
+        {{/rollLess() degrees1 0}}
+      {{/rollGreater() degrees1 degrees2}}
 
-		{{#rollTotal() degrees 0}}
-		{{#^rollLess() target roll}}
-		<tr class="sheet-success">
-			<th colspan="2">
-				<span>Success 0 </span> <span>SL </span>
-			</th>
-		</tr>
-		{{/^rollLess() target roll}}
-		{{#rollLess() target roll}}
-		<tr class="sheet-success">
-			<th colspan="2">
-				<span>Failure 0</span> <span>SL </span> 
-			</th>
-		</tr>
-		{{/rollLess() target roll}}
-		{{/rollTotal() degrees 0}}
+      <!-- reversedroll is greater than roll -->
+      {{#^rollGreater() degrees1 degrees2}}
+        {{#rollGreater() degrees2 0}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            UsingC : {{computed::degrees1}} SL -- Discarding: ({{computed::degrees2}} SL)
+            <br><span>Success with {{computed::degrees1}} </span> <span>SL </span>
+          </th>
+        </tr>
+        {{/rollGreater() degrees2 0}}
 
-		{{#rollLess() degrees 0}}
-		<tr class="sheet-failure">
-			<th colspan="2">
-				<span>Failure</span>  {{degrees}} <span>SL</span>
-			</th>
-		</tr>
-		{{/rollLess() degrees 0}}
+        {{#rollTotal() degrees2 0}}
+        {{#^rollLess() target reversedroll}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            <span>Success with 0 </span> <span>SL </span>
+          </th>
+        </tr>
+        {{/^rollLess() target reversedroll}}
+        {{#rollLess() target reversedroll}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            <span>Failure with 0</span> <span>SL </span> 
+          </th>
+        </tr>
+        {{/rollLess() target reversedroll}}
+        {{/rollTotal() degrees2 0}}
+    
+        {{#rollLess() degrees2 0}}
+        <tr class="sheet-failure">
+          <th colspan="2">
+            UsingD : {{computed::degrees2}} SL -- Discarding: ({{computed::degrees1}} SL)
+            <br><span>Failure</span> with {{computed::degrees2}} <span>SL</span>
+          </th>
+        </tr>
+        {{/rollLess() degrees2 0}}
+      {{/^rollGreater() degrees1 degrees2}}
+		{{/rollGreater() advantage 0}}
+    <!-- end roll with advantage -->
 
+    <!-- roll with disadvantage -->
+    {{#rollLess() advantage 0}}
+		<tr>
+			<td><span class="sheet-tcat">dice roll reversed (disadvantage): </span></td>
+			<td><span class="sheet-inlinerollresult">{{computed::reversedroll}}</span></td>
+		</tr>
+      <!-- roll is greater than reversedroll -->
+      {{#rollGreater() degrees1 degrees2}}
+        {{#rollGreater() degrees2 0}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            UsingA : {{computed::degrees2}} SL -- Discarding: ({{computed::degrees1}} SL)
+            <br><span>Success with {{computed::degrees2}} </span> <span>SL </span>
+          </th>
+        </tr>
+        {{/rollGreater() degrees2 0}}
+
+        {{#rollTotal() degrees2 0}}
+        {{#^rollLess() target reversedroll}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            <span>Success with 0 </span> <span>SL </span>
+          </th>
+        </tr>
+        {{/^rollLess() target reversedroll}}
+        {{#rollLess() target reversedroll}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            <span>Failure with 0</span> <span>SL </span> 
+          </th>
+        </tr>
+        {{/rollLess() target reversedroll}}
+        {{/rollTotal() degrees2 0}}
+    
+        {{#rollLess() degrees2 0}}
+        <tr class="sheet-failure">
+          <th colspan="2">
+            UsingB : {{computed::degrees2}} SL -- Discarding: ({{computed::degrees1}} SL)
+            <br><span>Failure</span> with {{computed::degrees2}} <span>SL</span>
+          </th>
+        </tr>
+        {{/rollLess() degrees2 0}}
+      {{/rollGreater() degrees1 degrees2}}
+
+      <!-- reversedroll is greater than roll -->
+      {{#^rollGreater() degrees1 degrees2}}
+        {{#rollGreater() degrees1 0}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            UsingC : {{computed::degrees1}} SL -- Discarding: ({{computed::degrees2}} SL)
+            <br><span>Success with {{computed::degrees1}} </span> <span>SL </span>
+          </th>
+        </tr>
+        {{/rollGreater() degrees1 0}}
+
+        {{#rollTotal() degrees1 0}}
+        {{#^rollLess() target roll}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            <span>Success with 0 </span> <span>SL </span>
+          </th>
+        </tr>
+        {{/^rollLess() target roll}}
+        {{#rollLess() target roll}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            <span>Failure with 0</span> <span>SL </span> 
+          </th>
+        </tr>
+        {{/rollLess() target roll}}
+        {{/rollTotal() degrees1 0}}
+    
+        {{#rollLess() degrees1 0}}
+        <tr class="sheet-failure">
+          <th colspan="2">
+            UsingD : {{computed::degrees1}} SL -- Discarding: ({{computed::degrees2}} SL)
+            <br><span>Failure</span> with {{computed::degrees1}} <span>SL</span>
+          </th>
+        </tr>
+        {{/rollLess() degrees1 0}}
+      {{/^rollGreater() degrees1 degrees2}}
+		{{/rollLess() advantage 0}}
+    <!-- end roll with disadvantage -->
+
+    <!-- roll no advantage -->
+    {{#rollTotal() advantage 0}}
+      {{#rollGreater() computed::degrees1 0}}
+      <tr class="sheet-success">
+        <th colspan="2">
+          <span>Success with</span> {{computed::degrees1}} <span>SL </span>
+        </th>
+      </tr>
+      {{/rollGreater() computed::degrees1 0}}
+      {{#rollTotal() computed::degrees1 0}}
+        {{#^rollLess() computed::target roll}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            <span>Success with 0 </span> <span>SL </span>
+          </th>
+        </tr>
+        {{/^rollLess() computed::target roll}}
+        {{#rollLess() computed::target roll}}
+        <tr class="sheet-success">
+          <th colspan="2">
+            <span>Failure with 0</span> <span>SL </span> 
+          </th>
+        </tr>
+        {{/rollLess() computed::target roll}}
+      {{/rollTotal() computed::degrees1 0}}
+      {{#rollLess() computed::degrees1 0}}
+      <tr class="sheet-failure">
+        <th colspan="2">
+          <span>Failure</span> with {{computed::degrees1}} <span>SL</span>
+        </th>
+      </tr>
+      {{/rollLess() computed::degrees1 0}}
+    {{/rollTotal() advantage 0}}
+  
 		{{#psy}}
 		<tr>
 			<td><span class="sheet-tcat">Result Psy: </span></td>
@@ -1158,7 +1291,7 @@
 		</tr>
 		{{/psy}}
 
-		{{#^rollLess() degrees 0}}
+		{{#^rollLess() degrees1 0}}
 		{{#^rollLess() target roll}}
 		{{#damage}}
 		<tr class="sheet-damage">
@@ -1201,7 +1334,7 @@
 		</tr>
 		{{/special}}
 		{{/^rollLess() target roll}}
-		{{/^rollLess() degrees 0}}
+		{{/^rollLess() degrees1 0}}
 
 		{{#initiative}}
 		<tr>
@@ -1214,6 +1347,11 @@
 
 <rolltemplate class="sheet-rolltemplate-imskills">
 	<table>
+    <tr>
+			<th colspan="2">
+				<img alt="spacer" src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Dark_Heresy_2ed/img/spacer.png"
+					class="sheet-rolltemplate-spacer"></th>
+		</tr>
 		<tr>
 			<th colspan="2" class="sheet-title">{{name}}</th>
 		</tr>
@@ -1358,23 +1496,56 @@
     let advantage = 'none';
 
     if (selected_characteristic == 'current_bs' || selected_characteristic == 'current_ws') { //roll ranged attack
-      startRoll("&{template:dh2ed} [[[[floor((@{"+selected_characteristic+"} +[[ ?{Advantage | None,+0 | Advantage,+0 | Advantage (+10),+10 | Advantage (+20),+20 | Disadvantage,-0  | Disadvantage (-10),-10 | Disadvantage (-20),-20} + ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])/10))]]-[[floor([[1d100]]/10)]]]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[3]] }}{{degrees=$[[5]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[1]]}}{{target=$[[1]]}}", (results) => {
+      startRoll("&{template:dh2ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_characteristic+"} +[[ ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[2]] }}{{degrees1=$[[6]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[5]]}}{{advantage=$[[0]]}}{{reversedroll=$[[1]]}}{{target=$[[3]]}}{{degrees2=$[[4]]}}", (results) => {
         console.log(selected_characteristic);
         console.log(selected_characteristic_name);
 
         let skill = results.results.skill.result;
-        let modifier = results.results.modifier.result;
-        let target = parseInt(skill)+parseInt(modifier);
+        let modifier = parseInt(results.results.modifier.result);
+        let advantage = results.results.advantage.result;
+        let roll = results.results.roll.result;
+        let reverseNumFn = num => parseInt(num.toString().split('').reverse().join('')) * Math.sign(num);
+        let reversedNum = reverseNumFn(roll);
+
+        console.log('reversed NUM '+reversedNum);
+
+        if (advantage > 0) {
+          modifier += (advantage-1)*10;
+          console.log('advantage '+advantage);
+          console.log('+advantage modifier '+modifier);
+        } else if (advantage < 0) {
+          modifier -= (advantage+1)*10;
+          console.log('advantage '+advantage);
+          console.log('-advantage modifier '+modifier);
+        } else {
+          console.log('advantage '+advantage);
+        }
+
+        let target = parseInt(skill)+modifier;
+        console.log('target '+target);
+
+        let degrees1 = Math.floor(target/10)-Math.floor(roll/10);
+        let degrees2 = Math.floor(target/10)-Math.floor(reversedNum/10);
+
+        console.log('DEGREES1: '+degrees1);
+        console.log('DEGREES2: '+degrees2);
 
         finishRoll(
             results.rollId,
             {
-                target: target
+              modifier: modifier,
+              reversedroll: reversedNum,
+              degrees1: degrees1,
+              degrees2: degrees2,
+              target: target,
+              advantage: advantage
             }
         );
+        console.log('results ');
+        console.log(results.results);
       });
     } else { //roll other characteristic
-      startRoll("&{template:dh2ed} [[[[floor((@{"+selected_characteristic+"} +[[ ?{Advantage | None,+0 | Advantage,+0 | Advantage (+10),+10 | Advantage (+20),+20 | Disadvantage,-0  | Disadvantage (-10),-10 | Disadvantage (-20),-20} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])/10))]]-[[floor([[1d100]]/10)]]]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[3]] }}{{degrees=$[[5]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[1]]}}{{target=$[[1]]}}", (results) => {
+      startRoll("&{template:dh2ed} [[[[floor((@{"+selected_characteristic+"} +[[ ?{Advantage | None,+0 | Advantage,+0 | Advantage (+10),+10 | Advantage (+20),+20 | Disadvantage,-0  | Disadvantage (-10),-10 | Disadvantage (-20),-20} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])/10))]]-[[floor([[1d100]]/10)]]]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[4]] }}{{degrees=$[[5]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[1]]}}{{target=$[[1]]}}", (results) => {
         console.log(selected_characteristic);
         console.log(selected_characteristic_name);
 
@@ -1397,13 +1568,18 @@ on('clicked:skill', (info) => {
   const myArray = characteristic.split("|");
   const selected_skill = myArray[0];
   const selected_skill_name = myArray[1];
-  console.log(selected_skill);
-  console.log(selected_skill_name);
   startRoll("&{template:dh2ed} [[[[floor((@{"+selected_skill+"} +[[ ?{Difficulty | Very Easy (+60),+60| Easy (+40),+40 | Routine (+20),+20 | Challenging (+0),+0 | Difficult (-10),-10 | Hard (-20),-20 | Very Hard (-30),-30} + [[?{Modifier|0}]] ]])/10))]]-[[floor([[1d100]]/10)]]]][[@{"+selected_skill+"}+?{Modifier|0}]] {{name="+selected_skill_name+"}}{{roll= $[[3]] }}{{degrees=$[[5]]}}{{skill=[[@{"+selected_skill+"}]]}}{{modifier=$[[1]]}}{{target=$[[1]]}}", (results) => {
 
     const skill = results.results.skill.result;
     const modifier = results.results.modifier.result;
+    const advantage = results.results.advantage.result;
     const target = parseInt(skill)+parseInt(modifier);
+
+    console.log(selected_skill);
+    console.log(selected_skill_name);
+    console.log('skill '+skill);
+    console.log('modifier '+modifier);
+    console.log('advantage '+advantage);
 
     finishRoll(
         results.rollId,
