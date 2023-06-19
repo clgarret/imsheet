@@ -328,7 +328,6 @@
     <div class="row fullwidth">
       <div class="column">
         <div class="row">
-          <input type="hidden" id="specialisation_name" name="attr_specialisation_name">
           <div class="skillstable">
             <div>Skill</div>
             <div>Char</div>
@@ -691,6 +690,7 @@
 
       <div class="column">
         <div class="row">
+          <input type="hidden" id="specialisation_name" name="attr_specialisation_name">
           <div class="skillstable">
             <div>Specialisation</div>
             <div>Skill</div>
@@ -1203,7 +1203,7 @@
     <div class="side">
       <div class="column">
         <div class="sectionheader">
-          ----INITIATIVE----
+          --INITIATIVE<button type="roll" value="/roll (floor(@{current_ag} / 10) % 10) + (floor(@{current_per} / 10) % 10) &{tracker}"></button>--
         </div>
         <div class="inputitem">
           <textarea class="textinput" id="initiative" name="attr_initiative" rows="5"></textarea>
@@ -1268,6 +1268,7 @@
     ------WEAPONS------
   </div>
   <div class="row">
+    <input type="hidden" id="weapon_name" name="attr_weapon_name">
     <div class="weaponstable">
       <div>NAME</div>
       <div>SPECIALISATION</div>
@@ -1280,13 +1281,13 @@
 
       <div>
         <input class="textinput" type="text" id="weapon_name1" name="attr_weapon_name1">
-        <button type="action" value="weapon_test1|Ranged Attack|weapon" name="act_imroll">
+        <button type="action" value="weapon_test1|1|weapon" name="act_imroll">
           *
         </button>
       </div>
       <div><input class="textinput" type="text" id="weapon_specialisation1" name="attr_weapon_specialisation1"></div>
       <div><input class="textinput" type="text" id="weapon_test1" name="attr_weapon_test1"></div>
-      <div><input class="textinput" type="text" id="weaon_damage1" name="attr_weaon_damage1"></div>
+      <div><input class="textinput" type="text" id="weapon_damage1" name="attr_weapon_damage1"></div>
       <div><input class="textinput" type="text" id="weapon_range1" name="attr_weapon_range1"></div>
       <div><input class="textinput" type="text" id="weapon_mag1" name="attr_weapon_mag1"></div>
       <div><input class="textinput" type="text" id="weapon_enc1" name="attr_weapon_enc1"></div>
@@ -1295,7 +1296,7 @@
       <div><input class="textinput" type="text" id="weapon_name2" name="attr_weapon_name2"></div>
       <div><input class="textinput" type="text" id="weapon_specialisation2" name="attr_weapon_specialisation2"></div>
       <div><input class="textinput" type="text" id="weapon_test2" name="attr_weapon_test2"></div>
-      <div><input class="textinput" type="text" id="weaon_damage2" name="attr_weaon_damage2"></div>
+      <div><input class="textinput" type="text" id="weapon_damage2" name="attr_weapon_damage2"></div>
       <div><input class="textinput" type="text" id="weapon_range2" name="attr_weapon_range2"></div>
       <div><input class="textinput" type="text" id="weapon_mag2" name="attr_weapon_mag2"></div>
       <div><input class="textinput" type="text" id="weapon_enc2" name="attr_weapon_enc2"></div>
@@ -1304,7 +1305,7 @@
       <div><input class="textinput" type="text" id="weapon_name3" name="attr_weapon_name3"></div>
       <div><input class="textinput" type="text" id="weapon_specialisation3" name="attr_weapon_specialisation3"></div>
       <div><input class="textinput" type="text" id="weapon_test3" name="attr_weapon_test3"></div>
-      <div><input class="textinput" type="text" id="weaon_damage3" name="attr_weaon_damage3"></div>
+      <div><input class="textinput" type="text" id="weapon_damage3" name="attr_weapon_damage3"></div>
       <div><input class="textinput" type="text" id="weapon_range3" name="attr_weapon_range3"></div>
       <div><input class="textinput" type="text" id="weapon_mag3" name="attr_weapon_mag3"></div>
       <div><input class="textinput" type="text" id="weapon_enc3" name="attr_weapon_enc3"></div>
@@ -1313,7 +1314,7 @@
       <div><input class="textinput" type="text" id="weapon_name4" name="attr_weapon_name4"></div>
       <div><input class="textinput" type="text" id="weapon_specialisation4" name="attr_weapon_specialisation4"></div>
       <div><input class="textinput" type="text" id="weapon_test4" name="attr_weapon_test4"></div>
-      <div><input class="textinput" type="text" id="weaon_damage4" name="attr_weaon_damage4"></div>
+      <div><input class="textinput" type="text" id="weapon_damage4" name="attr_weapon_damage4"></div>
       <div><input class="textinput" type="text" id="weapon_range4" name="attr_weapon_range4"></div>
       <div><input class="textinput" type="text" id="weapon_mag4" name="attr_weapon_mag4"></div>
       <div><input class="textinput" type="text" id="weapon_enc4" name="attr_weapon_enc4"></div>
@@ -1322,7 +1323,7 @@
       <div><input class="textinput" type="text" id="weapon_name5" name="attr_weapon_name5"></div>
       <div><input class="textinput" type="text" id="weapon_specialisation5" name="attr_weapon_specialisation5"></div>
       <div><input class="textinput" type="text" id="weapon_test5" name="attr_weapon_test5"></div>
-      <div><input class="textinput" type="text" id="weaon_damage5" name="attr_weaon_damage5"></div>
+      <div><input class="textinput" type="text" id="weapon_damage5" name="attr_weapon_damage5"></div>
       <div><input class="textinput" type="text" id="weapon_range5" name="attr_weapon_range5"></div>
       <div><input class="textinput" type="text" id="weapon_mag5" name="attr_weapon_mag5"></div>
       <div><input class="textinput" type="text" id="weapon_enc5" name="attr_weapon_enc5"></div>
@@ -1656,7 +1657,7 @@
         </tr>
         {{/rollLess() computed::target roll}}
         {{/rollTotal() computed::degrees1 0}}
-    
+
         {{#rollLess() computed::degrees1 0}}
         <tr>
           <th colspan="2">
@@ -2036,6 +2037,13 @@
 		{{/^rollLess() target roll}}
 		{{/^rollLess() degrees1 0}}
 
+    {{#computed::damage}}
+		<tr>
+			<td><span class="sheet-tcat">Damage: </span></td>
+			<td><span class="sheet-inlinerollresult">{{computed::damage}}</span></td>
+		</tr>
+		{{/computed::damage}}
+
 		{{#initiative}}
 		<tr>
 			<td><span class="sheet-tcat">Result: </span></td>
@@ -2053,7 +2061,7 @@
 		<tr>
 			<th colspan="2">
 				<img alt="spacer" src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Dark_Heresy_2ed/img/spacer.png"
-					 class="sheet-rolltemplate-spacer"></th>
+					class="sheet-rolltemplate-spacer"></th>
 		</tr>
 		{{#damage}}
 		<tr class="sheet-damage">
@@ -2125,7 +2133,7 @@
     } else if (selected_rolltype == 'specialisation') {
       getAttrs([selected_characteristic], function(values) {
         let specialisation_name = values[selected_characteristic];
-        setAttrs({                            
+        setAttrs({
           "specialisation_name": specialisation_name
         });
       });
@@ -2133,7 +2141,23 @@
       let selected_specialisation = selected_characteristic+"_total";
       roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_specialisation+"} +[[ ?{Difficulty | Very Easy (+60),+60| Easy (+40),+40 | Routine (+20),+20 | Challenging (+0),+0 | Difficult (-10),-10 | Hard (-20),-20 | Very Hard (-30),-30} + ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[@{"+selected_specialisation+"}]] {{name=@{specialisation_name} }}{{roll= $[[2]] }}{{degrees1=$[[3]]}}{{skill=[[@{"+selected_specialisation+"}]]}}{{modifier=$[[5]]}}{{advantage=$[[0]]}}{{reversedroll=$[[1]]}}{{target=$[[6]]}}{{degrees2=$[[4]]}}";
     } else if (selected_rolltype == 'weapon') {
-      roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_characteristic+"} +[[ ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[d1]][[d1]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[2]] }}{{degrees1=$[[6]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[1]]}}{{advantage=$[[0]]}}{{reversedroll=$[[5]]}}{{target=$[[8]]}}{{degrees2=$[[4]]}}{{unitdigit=$[[7]]}}{{reversedunitdigit=$[[3]]}}";
+      let weapon_name_get = "weapon_name"+selected_characteristic_name;
+      let weapon_damage_get = "weapon_damage"+selected_characteristic_name;
+
+      getAttrs([weapon_name_get,weapon_damage_get], function(values) {
+        let weapon_name = values[weapon_name_get];
+        let weapon_damage = values[weapon_damage_get];
+
+        console.log("WEAPON NAME: "+weapon_name);
+        console.log("WEAPON DAMAGE: "+weapon_damage);
+        setAttrs({
+          "weapon_name": weapon_name,
+          "weapon_damage": weapon_damage
+        });
+      });
+
+      let selected_weapon_test = selected_characteristic;
+      roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_weapon_test+"} +[[ ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[d1]][[d1]][[@{"+selected_weapon_test+"}]][[@{weapon_damage}]] {{name=@{weapon_name} }}{{roll= $[[2]] }}{{degrees1=$[[9]]}}{{skill=[[@{"+selected_weapon_test+"}]]}}{{modifier=$[[1]]}}{{advantage=$[[0]]}}{{reversedroll=$[[5]]}}{{target=$[[8]]}}{{degrees2=$[[4]]}}{{unitdigit=$[[7]]}}{{reversedunitdigit=$[[3]]}}{{damage=$[[6]]}}";
     }
 
     startRoll(roll_string, (results) => {
@@ -2143,6 +2167,7 @@
       let roll = results.results.roll.result;
       let reverseNumFn = num => parseInt(num.toString().split('').reverse().join('')) * Math.sign(num);
       let reversedNum = reverseNumFn(roll);
+      let damage = results.results.damage?.result|0;
 
       let unitDigitFn = num => num % 10;
       let unitDigit = unitDigitFn(roll);
@@ -2165,12 +2190,25 @@
 
       let target = parseInt(skill)+modifier;
       console.log('target '+target);
-
+      console.log('damage '+damage);
       let degrees1 = Math.floor(target/10)-Math.floor(roll/10);
       let degrees2 = Math.floor(target/10)-Math.floor(reversedNum/10);
 
       console.log('DEGREES1: '+degrees1);
       console.log('DEGREES2: '+degrees2);
+
+      let finalDamageFn = (advantage, damage, degrees1, degrees2) => {
+        let degrees = degrees1;
+        if (advantage > 0) {
+          degrees = Math.max(degrees1, degrees2);
+        } else if (advantage < 0) {
+          degrees = Math.min(degrees1, degrees2);
+        }
+        console.log("DEGREES USED: "+degrees);
+        return (parseInt(damage)+degrees);
+      }
+
+      let final_damage = finalDamageFn(advantage, damage, degrees1, degrees2);
 
       finishRoll(
           results.rollId,
@@ -2182,7 +2220,8 @@
             target: target,
             advantage: advantage,
             unitdigit: unitDigit,
-            reversedunitdigit: reversedUnitDigit
+            reversedunitdigit: reversedUnitDigit,
+            damage: final_damage
           }
       );
       console.log('results ');
