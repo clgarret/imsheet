@@ -91,7 +91,7 @@
     <div class="row margintop fullwidth">
       <div class="column">
         <div class="sectionheader">
-          ------ CHARACTERISTICS ------
+          ------CHARACTERISTICS------
         </div>
         <div class="row">
           <div class="characteristicstable">
@@ -287,8 +287,8 @@
       </div>
 
       <div class="column">
-        <div class="smallsectionheader">
-          ------ FATE ------
+        <div class="sectionheader">
+          --FATE--
         </div>
         <div class="row">
           <div class="inputitem">
@@ -303,8 +303,8 @@
       </div>
 
       <div class="column">
-        <div class="smallsectionheader">
-          ------ CORRUPTION ------
+        <div class="sectionheader">
+          --CORRUPTION--
         </div>
         <div class="row">
           <div class="inputitem">
@@ -1081,25 +1081,25 @@
     <div class="side">
       <div class="column">
         <div class="sectionheader">
-          ------ GOALS ------
+          ------GOALS------
         </div>
         <div class="inputitem">
           <textarea class="textinput smallinput" id="goals" name="attr_goals" rows="5"></textarea>
         </div>
         <div class="sectionheader">
-          ------ CONNECTIONS ------
+          ----CONNECTIONS----
         </div>
         <div class="inputitem">
           <textarea class="textinput smallinput" id="connections" name="attr_connections" rows="5"></textarea>
         </div>
         <div class="sectionheader">
-          ------ NOTES ------
+          ------NOTES------
         </div>
         <div class="inputitem">
           <textarea class="textinput smallinput" id="notes" name="attr_notes" rows="19"></textarea>
         </div>
         <div class="sectionheader">
-          ------ DIVINATION ------
+          ------DIVINATION------
         </div>
         <div class="inputitem">
           <textarea class="textinput smallinput" id="divination" name="attr_divination" rows="5"></textarea>
@@ -1110,7 +1110,7 @@
     <div class="main">
       <div class="column">
         <div class="sectionheader">
-          ------ INFLUENCE ------
+          ------INFLUENCE------
         </div>
         <div class="row">
           <div class="influencetable">
@@ -1158,7 +1158,7 @@
         </div>
 
         <div class="sectionheader">
-          ------ TALENTS ------
+          ------TALENTS------
         </div>
         <div class="row">
           <div class="talenttable">
@@ -1203,7 +1203,7 @@
     <div class="side">
       <div class="column">
         <div class="sectionheader">
-          ------ INITIATIVE ------
+          ----INITIATIVE----
         </div>
         <div class="inputitem">
           <textarea class="textinput" id="initiative" name="attr_initiative" rows="5"></textarea>
@@ -1223,7 +1223,7 @@
     </div>
     <div class="column">
       <div class="sectionheader">
-        ------ WOUNDS ------
+        ------WOUNDS------
       </div>
       <div class="row">
         <div class="inputitem">
@@ -1239,7 +1239,7 @@
     </div>
     <div class="column">
       <div class="sectionheader">
-        ------ CRITICAL WOUNDS ------
+        ------CRITICAL WOUNDS------
       </div>
       <div class="row">
         <div class="criticalwoundstable">
@@ -1265,7 +1265,7 @@
     </div>
   </div>
   <div class="row sectionheader margintop fullwidth">
-    ------ WEAPONS ------
+    ------WEAPONS------
   </div>
   <div class="row">
     <div class="weaponstable">
@@ -1278,7 +1278,12 @@
       <div>ENC</div>
       <div>TRAITS</div>
 
-      <div><input class="textinput" type="text" id="weapon_name1" name="attr_weapon_name1"></div>
+      <div>
+        <input class="textinput" type="text" id="weapon_name1" name="attr_weapon_name1">
+        <button type="action" value="weapon_test1|Ranged Attack|weapon" name="act_imroll">
+          *
+        </button>
+      </div>
       <div><input class="textinput" type="text" id="weapon_specialisation1" name="attr_weapon_specialisation1"></div>
       <div><input class="textinput" type="text" id="weapon_test1" name="attr_weapon_test1"></div>
       <div><input class="textinput" type="text" id="weaon_damage1" name="attr_weaon_damage1"></div>
@@ -1325,7 +1330,7 @@
     </div>
   </div>
   <div class="row sectionheader margintop fullwidth">
-    ------ ARMOUR ------
+    ------ARMOUR------
   </div>
   <div class="row">
     <div class="column">
@@ -1397,7 +1402,7 @@
   <div class="row">
     <div class="column width50">
       <div class="sectionheader">
-        ------ COMBAT NOTES ------
+        ------COMBAT NOTES------
       </div>
       <div class="inputitem">
         <textarea rows="15" class="textinput" id="combat_notes" name="attr_combat_notes"></textarea>
@@ -1405,7 +1410,7 @@
     </div>
     <div class="column width50">
       <div class="sectionheader">
-        ------ EQUIPMENT ------
+        ------EQUIPMENT------
       </div>
       <div class="row">
         <div class="equipmenttable">
@@ -1436,17 +1441,16 @@
 
           <div><input class="textinput" type="text" id="equipment19" name="attr_equipment19"></div>
           <div><input class="textinput" type="text" id="equipment20" name="attr_equipment20"></div>
-          <div>
+          <div class="miniheader">
             ENCUMBRANCE
             <div class="row">
-              <div class="inputitem">
+              <div class="inputitem width40">
                 <input class="textinput smallinput" type="text" id="encumbrance_current" name="attr_encumbrance_current">
-                <label class="textinput_label" for="encumbrance_current">CURRENT</label>
+                <label class="textinput_label minilabel" for="encumbrance_current">CURRENT</label>
               </div>
-              |
-              <div class="inputitem">
+              <div class="inputitem width40">
                 <input class="textinput smallinput" type="text" id="encumbrance_max" name="attr_encumbrance_max">
-                <label class="textinput_label" for="encumbrance_max">MAXIMUM</label>
+                <label class="textinput_label minilabel" for="encumbrance_max">MAXIMUM</label>
               </div>
             </div>
           </div>
@@ -1463,7 +1467,7 @@
 
   <div class="row">
     <div class="sectionheader">
-        ------ PSYCHIC POWERS ------
+        ------PSYCHIC POWERS------
     </div>
   </div>
   <div class="row">
@@ -1545,18 +1549,16 @@
           <input class="textinput" type="text" id="psychic_effect9" name="attr_psychic_effect9">
           <input class="textinput" type="text" id="psychic_effect10" name="attr_psychic_effect10">
         </div>
-        <div class="column width50">
-
+        <div class="column width50 miniheader">
           WARP CHARGE
           <div class="row">
-            <div class="inputitem">
+            <div class="inputitem width40">
               <input class="textinput smallinput" type="text" id="warp_charge_current" name="attr_warp_charge_current">
-              <label class="textinput_label" for="warp_charge_current">CURRENT</label>
+              <label class="textinput_label minilabel" for="warp_charge_current">CURRENT</label>
             </div>
-            |
-            <div class="inputitem">
+            <div class="inputitem width40">
               <input class="textinput smallinput" type="text" id="warp_charge_threshold" name="attr_warp_charge_threshold">
-              <label class="textinput_label" for="warp_charge_threshold">THRESHOLD</label>
+              <label class="textinput_label minilabel" for="warp_charge_threshold">THRESHOLD</label>
             </div>
           </div>
         </div>
@@ -2117,9 +2119,9 @@
     console.log(selected_characteristic_name);
     console.log(selected_rolltype);
 
-    let roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_characteristic+"} +[[ ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[2]] }}{{degrees1=$[[6]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[5]]}}{{advantage=$[[0]]}}{{reversedroll=$[[1]]}}{{target=$[[3]]}}{{degrees2=$[[4]]}}{{unitdigit=[[@{"+selected_characteristic+"}]] }}{{reversedunitdigit=[[@{"+selected_characteristic+"}]]}}";
+    let roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_characteristic+"} +[[ ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[2]] }}{{degrees1=$[[3]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[5]]}}{{advantage=$[[0]]}}{{reversedroll=$[[1]]}}{{target=$[[6]]}}{{degrees2=$[[4]]}}";
     if (selected_rolltype == 'skill') {
-      roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_characteristic+"} +[[ ?{Difficulty | Very Easy (+60),+60| Easy (+40),+40 | Routine (+20),+20 | Challenging (+0),+0 | Difficult (-10),-10 | Hard (-20),-20 | Very Hard (-30),-30} + ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[2]] }}{{degrees1=$[[6]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[5]]}}{{advantage=$[[0]]}}{{reversedroll=$[[1]]}}{{target=$[[3]]}}{{degrees2=$[[4]]}}{{unitdigit=[[@{"+selected_characteristic+"}]] }}{{reversedunitdigit=[[@{"+selected_characteristic+"}]]}}";
+      roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_characteristic+"} +[[ ?{Difficulty | Very Easy (+60),+60| Easy (+40),+40 | Routine (+20),+20 | Challenging (+0),+0 | Difficult (-10),-10 | Hard (-20),-20 | Very Hard (-30),-30} + ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[2]] }}{{degrees1=$[[3]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[5]]}}{{advantage=$[[0]]}}{{reversedroll=$[[1]]}}{{target=$[[6]]}}{{degrees2=$[[4]]}}";
     } else if (selected_rolltype == 'specialisation') {
       getAttrs([selected_characteristic], function(values) {
         let specialisation_name = values[selected_characteristic];
@@ -2129,7 +2131,9 @@
       });
 
       let selected_specialisation = selected_characteristic+"_total";
-      roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_specialisation+"} +[[ ?{Difficulty | Very Easy (+60),+60| Easy (+40),+40 | Routine (+20),+20 | Challenging (+0),+0 | Difficult (-10),-10 | Hard (-20),-20 | Very Hard (-30),-30} + ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[@{"+selected_specialisation+"}]] {{name=@{specialisation_name} }}{{roll= $[[2]] }}{{degrees1=$[[6]]}}{{skill=[[@{"+selected_specialisation+"}]]}}{{modifier=$[[5]]}}{{advantage=$[[0]]}}{{reversedroll=$[[1]]}}{{target=$[[3]]}}{{degrees2=$[[4]]}{{unitdigit=[[@{"+selected_characteristic+"}]] }}{{reversedunitdigit=[[@{"+selected_characteristic+"}]]}}";
+      roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_specialisation+"} +[[ ?{Difficulty | Very Easy (+60),+60| Easy (+40),+40 | Routine (+20),+20 | Challenging (+0),+0 | Difficult (-10),-10 | Hard (-20),-20 | Very Hard (-30),-30} + ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[@{"+selected_specialisation+"}]] {{name=@{specialisation_name} }}{{roll= $[[2]] }}{{degrees1=$[[3]]}}{{skill=[[@{"+selected_specialisation+"}]]}}{{modifier=$[[5]]}}{{advantage=$[[0]]}}{{reversedroll=$[[1]]}}{{target=$[[6]]}}{{degrees2=$[[4]]}}";
+    } else if (selected_rolltype == 'weapon') {
+      roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_characteristic+"} +[[ ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[d1]][[d1]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[2]] }}{{degrees1=$[[6]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[1]]}}{{advantage=$[[0]]}}{{reversedroll=$[[5]]}}{{target=$[[8]]}}{{degrees2=$[[4]]}}{{unitdigit=$[[7]]}}{{reversedunitdigit=$[[3]]}}";
     }
 
     startRoll(roll_string, (results) => {

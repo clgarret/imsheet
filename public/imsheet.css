@@ -2,6 +2,12 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
+  font-family: georgia;
+}
+.sectionheader {
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
 }
 .fullwidth {
   justify-content: space-between;
@@ -11,6 +17,9 @@
 }
 .width30 {
   width: 30%;
+}
+.width40 {
+  width: 40%;
 }
 .width50 {
   width: 50%;
@@ -42,9 +51,15 @@
   flex-shrink: 2;
 }
 .margintop {
-  margin-top: 55px;
+  margin-top: 5px;
 }
-
+.miniheader {
+  font-weight: bold;
+  text-align: center;
+}
+.minilabel {
+  font-size:0.9em !important;
+}
 label {
   text-transform: uppercase;
 }
