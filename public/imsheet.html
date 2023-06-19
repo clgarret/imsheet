@@ -1472,6 +1472,10 @@
     </div>
   </div>
   <div class="row">
+    <input type="hidden" id="psychic_wr" name="attr_psychic_wr">
+    <input type="hidden" id="psychic_name" name="attr_psychic_name">
+    <input type="hidden" id="psychic_difficulty" name="attr_psychic_difficulty">
+    <input type="hidden" id="psychic_effect" name="attr_psychic_effect">
     <div class="psychictable">
       <div>NAME</div>
       <div>WR</div>
@@ -2090,12 +2094,47 @@
       {{/computed::unitdigit}} 
     {{/rollTotal() advantage 0}}
   
-		{{#psy}}
-		<tr>
-			<td><span class="sheet-tcat">Result Psy: </span></td>
-			<td><span class="sheet-inlinerollresult">{{psy}}</span></td>
+		{{#wr}}
+    <tr>
+			<td><span class="sheet-tcat">WR: </span></td>
+			<td><span class="sheet-inlinerollresult">{{wr}}</span></td>
 		</tr>
-		{{/psy}}
+    <tr>
+			<td><span class="sheet-tcat">Effect: </span></td>
+			<td><span class="sheet-inlinerollresult">{{effect}}</span></td>
+		</tr>
+		<tr>
+			<td><span class="sheet-tcat">Difficulty: </span></td>
+			<td>
+        <span class="sheet-inlinerollresult">
+          {{#difficulty}}
+            {{ difficulty }}
+            {{#rollTotal() difficulty 0}}
+              Challenging (+0)
+            {{/rollTotal() difficulty 0}}
+            {{#rollTotal() difficulty 20}}
+              Routine (+20)
+            {{/rollTotal() difficulty 20}}
+            {{#rollTotal() difficulty 40}}
+              Easy (+40)
+            {{/rollTotal() difficulty 40}}
+            {{#rollTotal() difficulty 60}}
+              Very Easy (+60)
+            {{/rollTotal() difficulty 60}}
+            {{#rollTotal() difficulty -10}}
+              Difficult (-10)
+            {{/rollTotal() difficulty -10}}
+            {{#rollTotal() difficulty -20}}
+              Hard (-20)
+            {{/rollTotal() difficulty -20}}
+            {{#rollTotal() difficulty -30}}
+              Very Hard (-30)
+            {{/rollTotal() difficulty -30}}
+          {{/difficulty}}
+        </span>
+      </td>
+		</tr>
+		{{/wr}}
 
     {{#computed::damage}}
     <tr>
@@ -2131,6 +2170,10 @@
     const selected_characteristic_name = myArray[1];
     const selected_rolltype = myArray[2];
     const debug = true;
+    let wr = '';
+    let difficulty = 0;
+    let name = '';
+    let effect = '';
 
     let roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_characteristic+"} +[[ ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[@{"+selected_characteristic+"}]] {{name="+selected_characteristic_name+"}}{{roll= $[[2]] }}{{degrees1=$[[3]]}}{{skill=[[@{"+selected_characteristic+"}]]}}{{modifier=$[[5]]}}{{advantage=$[[0]]}}{{reversedroll=$[[1]]}}{{target=$[[6]]}}{{degrees2=$[[4]]}}";
     if (selected_rolltype == 'skill') {
@@ -2161,6 +2204,41 @@
 
       let selected_weapon_test = selected_characteristic;
       roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{"+selected_weapon_test+"} +[[ ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[d1]][[d1]][[@{"+selected_weapon_test+"}]][[@{weapon_damage}]] {{name=@{weapon_name} }}{{roll= $[[2]] }}{{degrees1=$[[9]]}}{{skill=[[@{"+selected_weapon_test+"}]]}}{{modifier=$[[1]]}}{{advantage=$[[0]]}}{{reversedroll=$[[5]]}}{{target=$[[8]]}}{{degrees2=$[[4]]}}{{unitdigit=$[[7]]}}{{reversedunitdigit=$[[3]]}}{{damage=$[[6]]}}";
+    } else if (selected_rolltype == 'psychic') {
+      wr_field = "psychic_wr"+selected_characteristic_name;
+      difficulty_field = "psychic_difficulty"+selected_characteristic_name;
+      name_field = "psychic_name"+selected_characteristic_name;
+      effect_field = "psychic_effect"+selected_characteristic_name;
+      if (debug) {
+        console.log('PSYCHIC WRa: '+wr_field);
+        console.log('PSYCHIC DIFFICULTYa: '+difficulty_field);
+        console.log('PSYCHIC NAMEa: '+name_field);
+        console.log('PSYCHIC EFFECTa: '+effect_field);
+      }
+      getAttrs([wr_field,difficulty_field,name_field,effect_field], function(values) {
+        let psychic_wr = values[wr_field];
+        let psychic_difficulty = values[difficulty_field];
+        let psychic_name = values[name_field];
+        let psychic_effect = values[effect_field];
+        difficulty = psychic_difficulty;
+
+        if (debug) {
+          console.log('PSYCHIC WR: '+psychic_wr);
+          console.log('PSYCHIC DIFFICULTY: '+psychic_difficulty);
+          console.log('PSYCHIC NAME: '+psychic_name);
+          console.log('PSYCHIC EFFECT: '+psychic_effect);
+        }
+
+        setAttrs({
+          "psychic_wr": psychic_wr,
+          "psychic_name": psychic_name,
+          "psychic_difficulty": psychic_difficulty,
+          "psychic_effect": psychic_effect
+        });
+      });
+
+      roll_string = "&{template:im1ed} [[?{Advantage | None,+0 | Advantage,+1 | Advantage (+10),+2 | Advantage (+20),+3 | Disadvantage,-1  | Disadvantage (-10),-2 | Disadvantage (-20),-3}]][[[[floor((@{skill_psychic_mastery} +[[ ?{Superiority | None,+0 | +3,+30 | +2,+20 | +1,+10} + [[?{Modifier | None,+0 | +30,+30 | +20,+20 | +10,+10 | -30,-30 | -20,-20 | -10,-10 }]] ]])))]]]][[1d100]][[d1]][[d1]][[d1]][[d1]][[d1]] {{wr=@{psychic_wr} }}{{name=@{psychic_name} }}{{difficulty=@{psychic_difficulty} }}{{effect=@{psychic_effect} }}{{roll= $[[2]] }}{{degrees1=$[[3]]}}{{skill=[[@{skill_psychic_mastery}]]}}{{modifier=$[[1]]}}{{advantage=$[[0]]}}{{reversedroll=$[[8]]}}{{target=$[[9]]}}{{degrees2=$[[10]]}}";
+console.log(roll_string);
     }
 
     startRoll(roll_string, (results) => {
@@ -2176,13 +2254,22 @@
       let unitDigit = unitDigitFn(roll);
       let reversedUnitDigit = unitDigitFn(reversedNum);
 
-
       if (advantage > 0) {
         modifier += (advantage-1)*10;
         if (debug) console.log('+Advantage modifier '+modifier);
       } else if (advantage < 0) {
         modifier -= (advantage+1)*10;
         if (debug) console.log('-Advantage modifier '+modifier);
+      }
+
+      //TODO ADD IN THE MODIFIER FOR PSYCHIC DIFFICULTY 
+      let difficulty = 0;
+      if (difficulty != 0) {
+        <!-- modifier += parseInt(difficulty); -->
+        if (debug) {
+          console.log('PSYCHIC DIFFICULTY MODIFIER '+difficulty);
+          console.log('TOTAL MODIFIER '+modifier);
+        }
       }
 
       let target = parseInt(skill)+modifier;
@@ -2213,7 +2300,11 @@
             advantage: advantage,
             unitdigit: unitDigit,
             reversedunitdigit: reversedUnitDigit,
-            damage: final_damage
+            damage: final_damage,
+            name: name,
+            effect: effect,
+            difficulty: difficulty,
+            wr: wr
           }
       );
 
