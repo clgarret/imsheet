@@ -211,12 +211,14 @@ label {
 
 /*Configure the tab buttons*/
 .sheet-character,
-.sheet-combat {
+.sheet-combat,
+.sheet-patron {
     display: none;
 }
 
 /* show the selected tab */
 .sheet-tabstoggle[value="character"] ~ div.sheet-character,
-.sheet-tabstoggle[value="combat"] ~ div.sheet-combat {
+.sheet-tabstoggle[value="combat"] ~ div.sheet-combat,
+.sheet-tabstoggle[value="patron"] ~ div.sheet-patron {
     display: block;
 }
