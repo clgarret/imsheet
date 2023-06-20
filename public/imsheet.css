@@ -99,15 +99,23 @@ label {
 }
 .influencetable {
   display: grid;
-    grid-template-columns: 2fr 1fr 4fr;
-    min-height: 30vh;
+  grid-template-columns: 2fr 1fr 4fr;
+  min-height: 30vh;
 }
 .influencetable > div {
   margin: 2px;
   padding: 2px;
   border: 1px solid #000000;
 }
-
+.patroninfluencetable {
+  display: grid;
+  grid-template-columns: 2fr 1fr 4fr 3fr;
+  min-height: 30vh;
+}
+.patroninfluencetable {
+  margin: 2px;
+  padding: 2px;
+}
 .talenttable {
   display: grid;
     grid-template-columns: 2fr 5fr;

@@ -3,6 +3,7 @@
 <div>
     <button type="action" name="act_character" >Character</button>
     <button type="action" name="act_combat" >Combat</button>
+    <button type="action" name="act_patron" >Patron</button>
 </div>
 
 <div class="sheet-character">
@@ -1751,6 +1752,148 @@
   </div>
 </div>
 
+<div class="sheet-patron">
+  <div class="sheet-2colrow">
+    <div class="sheet-col">
+      <div>
+        <img class="logo" src="https://cubicle7games.com/media/wysiwyg/IM-Logo-Banner.png"/>
+      </div>
+    </div>
+    <div class="sheet-col">
+      <h1>-----Patron Sheet-----</h1>
+    </div>
+  </div>
+
+  <div class="sheet-3colrow margintop">
+    <div class="sheet-col">
+      <div class="inputitem">
+        <input class="textinput" type="text" id="patron_name" name="attr_patron_name">
+        <label class="textinput_label" for="patron_name">Patron Name</label>
+      </div>
+      <div class="inputitem">
+        <input class="textinput" type="text" id="patron_pay_grade" name="attr_patron_pay_grade">
+        <label class="textinput_label" for="patron_pay_grade">Pay Grade</label>
+      </div>
+    </div>
+    <div class="sheet-col">
+      <div class="inputitem">
+        <input class="textinput" type="text" id="patron_faction" name="attr_patron_faction">
+        <label class="textinput_label" for="patron_faction">Faction</label>
+      </div>
+      <div class="inputitem">
+        <input class="textinput" type="text" id="patron_motivation" name="attr_patron_motivation">
+        <label class="textinput_label" for="patron_motivation">Motivation</label>
+      </div>
+    </div>
+    <div class="sheet-col">
+      <div class="inputitem">
+        <input class="textinput" type="text" id="patron_duty" name="attr_patron_duty">
+        <label class="textinput_label" for="patron_dutty">Duty</label>
+      </div>
+      <div class="inputitem">
+        <input class="textinput" type="text" id="patron_demeanour" name="attr_patron_demeanour">
+        <label class="textinput_label" for="patron_demeanour">Demeanour</label>
+      </div>
+    </div>
+  </div>
+  <div class="sheet-2colrow">
+    <div class="sheet-col">
+      <div>
+        <div class="sectionheader">
+          ------BOONS------
+        </div>
+      </div>
+      <div class="inputitem">
+        <textarea rows="15" class="textinput" id="patron_boons" name="attr_patron_boons"></textarea>
+      </div>
+    </div>
+    <div class="sheet-col">
+      <div class="sectionheader">
+        ------LIABILITIES------
+      </div>
+      <div class="inputitem">
+        <textarea rows="15" class="textinput" id="patron_liabilities" name="attr_patron_liabilities"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="sheet-1colrow">
+    <div class="sectionheader">
+      ------INFLUENCE------
+    </div>
+    <div>
+      <div class="patroninfluencetable">
+        <div>FACTION</div>
+        <div>INFL</div>
+        <div>CONTACTS</div>
+        <div>INTEL</div>
+
+        <div><input class="textinput" type="text" id="patron_faction1" name="attr_patron_faction1"></div>
+        <div><input class="textinput" type="text" id="patron_infl1" name="attr_patron_infl1"></div>
+        <div><input class="textinput" type="text" id="patron_contacts1" name="attr_patron_contacts1"></div>
+        <div><input class="textinput" type="text" id="patron_intel1" name="attr_patron_intel1"></div>
+
+        <div><input class="textinput" type="text" id="patron_faction2" name="attr_patron_faction2"></div>
+        <div><input class="textinput" type="text" id="patron_infl2" name="attr_patron_infl2"></div>
+        <div><input class="textinput" type="text" id="patron_contacts2" name="attr_patron_contacts2"></div>
+        <div><input class="textinput" type="text" id="patron_intel2" name="attr_patron_intel2"></div>
+
+        <div><input class="textinput" type="text" id="patron_faction3" name="attr_patron_faction3"></div>
+        <div><input class="textinput" type="text" id="patron_infl3" name="attr_patron_infl3"></div>
+        <div><input class="textinput" type="text" id="patron_contacts3" name="attr_patron_contacts3"></div>
+        <div><input class="textinput" type="text" id="patron_intel3" name="attr_patron_intel3"></div>
+
+        <div><input class="textinput" type="text" id="patron_faction4" name="attr_patron_faction4"></div>
+        <div><input class="textinput" type="text" id="patron_infl4" name="attr_patron_infl4"></div>
+        <div><input class="textinput" type="text" id="patron_contacts4" name="attr_patron_contacts4"></div>
+        <div><input class="textinput" type="text" id="patron_intel4" name="attr_patron_intel4"></div>
+
+        <div><input class="textinput" type="text" id="patron_faction5" name="attr_patron_faction5"></div>
+        <div><input class="textinput" type="text" id="patron_infl5" name="attr_patron_infl5"></div>
+        <div><input class="textinput" type="text" id="patron_contacts5" name="attr_patron_contacts5"></div>
+        <div><input class="textinput" type="text" id="patron_intel5" name="attr_patron_intel5"></div>
+
+        <div><input class="textinput" type="text" id="patron_faction6" name="attr_patron_faction6"></div>
+        <div><input class="textinput" type="text" id="patron_infl6" name="attr_patron_infl6"></div>
+        <div><input class="textinput" type="text" id="patron_contacts6" name="attr_patron_contacts6"></div>
+        <div><input class="textinput" type="text" id="patron_intel6" name="attr_patron_intel6"></div>
+
+        <div><input class="textinput" type="text" id="patron_faction7" name="attr_patron_faction7"></div>
+        <div><input class="textinput" type="text" id="patron_infl7" name="attr_patron_infl7"></div>
+        <div><input class="textinput" type="text" id="patron_contacts7" name="attr_patron_contacts7"></div>
+        <div><input class="textinput" type="text" id="patron_intel7" name="attr_patron_intel7"></div>
+
+        <div><input class="textinput" type="text" id="patron_faction8" name="attr_patron_faction8"></div>
+        <div><input class="textinput" type="text" id="patron_infl8" name="attr_patron_infl8"></div>
+        <div><input class="textinput" type="text" id="patron_contacts8" name="attr_patron_contacts8"></div>
+        <div><input class="textinput" type="text" id="patron_intel8" name="attr_patron_intel8"></div>
+
+        <div><input class="textinput" type="text" id="patron_faction9" name="attr_patron_faction9"></div>
+        <div><input class="textinput" type="text" id="patron_infl9" name="attr_patron_infl9"></div>
+        <div><input class="textinput" type="text" id="patron_contacts9" name="attr_patron_contacts9"></div>
+        <div><input class="textinput" type="text" id="patron_intel9" name="attr_patron_intel9"></div>
+
+        <div><input class="textinput" type="text" id="patron_faction10" name="attr_patron_faction10"></div>
+        <div><input class="textinput" type="text" id="patron_infl10" name="attr_patron_infl10"></div>
+        <div><input class="textinput" type="text" id="patron_contacts10" name="attr_patron_contacts10"></div>
+        <div><input class="textinput" type="text" id="patron_intel10" name="attr_patron_intel10"></div>
+
+        <div><input class="textinput" type="text" id="patron_faction11" name="attr_patron_faction11"></div>
+        <div><input class="textinput" type="text" id="patron_infl11" name="attr_patron_infl11"></div>
+        <div><input class="textinput" type="text" id="patron_contacts11" name="attr_patron_contacts11"></div>
+        <div><input class="textinput" type="text" id="patron_intel11" name="attr_patron_intel11"></div>
+      </div>
+    </div>
+  </div>
+  <div class="sheet-1colrow">
+    <div class="sectionheader">
+      ------NOTES------
+    </div>
+    <div class="inputitem">
+      <textarea rows="15" class="textinput" id="patron_notes" name="attr_patron_notes"></textarea>
+    </div>
+  </div>
+</div>
+
 <!--Roll Template-->
 <rolltemplate class="sheet-rolltemplate-im1ed">
 	<table>
@@ -2214,7 +2357,7 @@
 </rolltemplate>
 
 <script type="text/worker">
-  const buttonlist = ["character","combat"];
+  const buttonlist = ["character","combat","patron"];
   buttonlist.forEach(button => {
       on(`clicked:${button}`, function() {
         console.log(button);
