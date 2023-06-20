@@ -66,7 +66,7 @@ label {
 }
 .characteristicstable {
     display: grid;
-    grid-template-columns: repeat(11, 50px);
+    grid-template-columns: repeat(11, 45px);
 }
 .characteristicstable > div {
   margin: 2px;
@@ -83,6 +83,16 @@ label {
     min-height: 30vh;
 }
 .skillstable > div {
+  margin: 2px;
+  padding: 2px;
+  border: 1px solid #000000;
+}
+.specialisationtable {
+  display: grid;
+  grid-template-columns: 1fr 1fr .5fr .5fr;
+  min-height: 30vh;
+}
+.specialisationtable > div {
   margin: 2px;
   padding: 2px;
   border: 1px solid #000000;
