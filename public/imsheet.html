@@ -1938,11 +1938,11 @@
 
     <!-- roll with advantage -->
     {{#rollGreater() advantage 0}}
-		<tr>
-			<td><span class="sheet-tcat">dice roll reversed (advantage): </span></td>
-			<td><span class="sheet-inlinerollresult">{{computed::reversedroll}}</span></td>
-		</tr>
-      <!-- roll is greater than reversedroll so use roll-->
+      <tr>
+        <td><span class="sheet-tcat">dice roll reversed (advantage): </span></td>
+        <td><span class="sheet-inlinerollresult">{{computed::reversedroll}}</span></td>
+      </tr>
+      <!-- roll is greater than reversedroll so use roll and degrees1-->
       {{#rollGreater() computed::degrees1 computed::degrees2}}
         {{#rollGreater() computed::degrees1 0}}
         <tr class="sheet-success">
@@ -1955,64 +1955,70 @@
 
         <!-- degrees1 is 0 -->
         {{#rollTotal() computed::degrees1 0}}
-          <!-- if target greater than roll -->
+          <!-- if target same or greater than roll -->
           {{#^rollLess() computed::target roll}}
             <!-- roll 96-99 is always a failure with minimum 0 (set to 0 minimum in sheet worker)-->
-            {{#rollBetween() computed::degrees1 96 99}}
+            {{#rollBetween() roll 96 99}}
               <tr class="sheet-failure">
                 <th colspan="2">
-                  <span>Failure with 0</span> <span>SL </span> 
+                  <span>Failure with 0</span> <span>SL </span>
                 </th>
-              </tr>            
-            {{/rollBetween() computed::degrees1 96 99}}
+              </tr>
+              <tr class="sheet-failure">
+                <th colspan="2">
+                  <span>96-100 is an automatic failure.</span>
+                </th>
+              </tr>
+            {{/rollBetween() roll 96 99}}
 
             <!-- roll 00-95 is always a success with minimum 0 unless roll is 00 (set to 0 minimum in sheet worker)-->
-            {{#^rollBetween() computed::degrees1 96 99}}
-              {{#rollTotal() computed::degrees1 0}}
+            {{#^rollBetween() roll 96 99}}
+              {{#rollTotal() roll 0}}
                 <tr class="sheet-failure">
                   <th colspan="2">
                     <span>Failure with 0 </span> <span>SL </span>
                   </th>
-                </tr>              
-              {{/rollTotal() computed::degrees1 0}}
-              {{#^rollTotal() computed::degrees1 0}}
+                </tr>
+                <tr class="sheet-failure">
+                  <th colspan="2">
+                    <span>96-100 is an automatic failure.</span>
+                  </th>
+                </tr>
+              {{/rollTotal() roll 0}}
+              {{#^rollTotal() roll 0}}
                 <tr class="sheet-success">
                   <th colspan="2">
                     <span>Success with 0 </span> <span>SL </span>
                   </th>
                 </tr>
-                {{/^rollTotal() computed::degrees1 0}}
-            {{/^rollBetween() computed::degrees1 96 99}}
+              {{/^rollTotal() roll 0}}
+            {{/^rollBetween() roll 96 99}}
           {{/^rollLess() computed::target roll}}
           <!-- end if target is greater than roll -->
 
           <!-- if target is less than roll -->
           {{#rollLess() computed::target roll}}
             <!-- roll 01-05 is always a success with minimum 0(set to 0 minimum in sheet worker)-->
-            {{#rollBetween() computed::degrees1 1 5}}
+            {{#rollBetween() roll 1 5}}
               <tr class="sheet-success">
                 <th colspan="2">
-                  <span>Success with 0</span> <span>SL </span> 
+                  <span>Success with 0</span> <span>SL </span>
                 </th>
-              </tr>            
-            {{/rollBetween() computed::degrees1 1 5}}
+              </tr>
+              <tr class="sheet-success">
+                <th colspan="2">
+                  <span>01-05 is an automatic success.</span>
+                </th>
+              </tr>
+            {{/rollBetween() roll 1 5}}
             <!-- roll other than 1-5 is always a failure if roll is a 00 with minimum 0 unless roll is 00 (set to 0 minimum in sheet worker)-->
-            {{#^rollBetween() computed::degrees1 1 5}}
-              {{#rollTotal() computed::degrees1 0}}
-                <tr class="sheet-failure">
-                  <th colspan="2">
-                    <span>Failure with 0 </span> <span>SL </span>
-                  </th>
-                </tr>              
-              {{/rollTotal() computed::degrees1 0}}
-              {{#^rollTotal() computed::degrees1 0}}
-                <tr class="sheet-success">
-                  <th colspan="2">
-                    <span>Success with 0 </span> <span>SL </span>
-                  </th>
-                </tr>
-              {{/^rollTotal() computed::degrees1 0}}
-            {{/^rollBetween() computed::degrees1 1 5}}
+            {{#^rollBetween() roll 1 5}}
+              <tr class="sheet-failure">
+                <th colspan="2">
+                  <span>Failure with 0 </span> <span>SL </span>
+                </th>
+              </tr>
+            {{/^rollBetween() roll 1 5}}
           {{/rollLess() computed::target roll}}
           <!-- end if target is less than roll-->
         {{/rollTotal() computed::degrees1 0}}
@@ -2078,11 +2084,10 @@
             </tr>
           {{/rollGreater() computed::unitdigit 5}}
         {{/computed::unitdigit}} 
-
       {{/rollGreater() computed::degrees1 computed::degrees2}}
-      <!-- end roll is greater than reversedroll so use roll -->
+      <!-- end roll is greater than reversedroll so use roll and degrees1-->
 
-      <!-- reversedroll is greater than roll -->
+      <!-- reversedroll is greater than roll so use reversedroll and degrees2 -->
       {{#^rollGreater() computed::degrees1 computed::degrees2}}
         {{#rollGreater() computed::degrees2 0}}
         <tr class="sheet-success">
@@ -2096,55 +2101,65 @@
         <!-- degrees2 is 0 -->
         {{#rollTotal() computed::degrees2 0}}
           <!-- if target greater than reverseroll -->
-          {{#^rollLess() computed::target reversedroll}}
+          {{#^rollLess() computed::target computed::reversedroll}}
             <!-- roll 96-99 is always a failure with minimum 0 (set to 0 minimum in sheet worker)-->
-            {{#rollBetween() computed::degrees2 96 99}}
+            {{#rollBetween() computed::reversedroll 96 99}}
               <tr class="sheet-failure">
                 <th colspan="2">
-                  <span>Failure with 0</span> <span>SL </span> 
+                  <span>Failure with 0</span> <span>SL </span>
                 </th>
-              </tr>            
-            {{/rollBetween() computed::degrees2 96 99}}
+              </tr>
+              <tr class="sheet-failure">
+                <th colspan="2">
+                  <span>96-100 is an automatic failure.</span>
+                </th>
+              </tr>
+            {{/rollBetween() computed::reversedroll 96 99}}
 
             <!-- roll 00-95 is always a success with minimum 0 unless roll is 00 (set to 0 minimum in sheet worker)-->
-            {{#^rollBetween() computed::degrees2 96 99}}
-              {{#rollTotal() computed::degrees2 0}}
+            {{#^rollBetween() computed::reversedroll 96 99}}
+              {{#rollTotal() computed::reversedroll 0}}
                 <tr class="sheet-failure">
                   <th colspan="2">
                     <span>Failure with 0 </span> <span>SL </span>
                   </th>
                 </tr>              
-              {{/rollTotal() computed::degrees2 0}}
-              {{#^rollTotal() computed::degrees2 0}}
+              {{/rollTotal() computed::reversedroll 0}}
+              {{#^rollTotal() computed::reversedroll 0}}
                 <tr class="sheet-success">
                   <th colspan="2">
                     <span>Success with 0 </span> <span>SL </span>
                   </th>
                 </tr>
-                {{/^rollTotal() computed::degrees2 0}}
-            {{/^rollBetween() computed::degrees2 96 99}}
-          {{/^rollLess() computed::target reversedroll}}
+              {{/^rollTotal() computed::reversedroll 0}}
+            {{/^rollBetween() computed::reversedroll 96 99}}
+          {{/^rollLess() computed::target computed::reversedroll}}
           <!-- end if target is greater than reverseroll -->
 
           <!-- if target is less than reverseroll -->
-          {{#rollLess() computed::target reversedroll}}
+          {{#rollLess() computed::target computed::reversedroll}}
             <!-- roll 01-05 is always a success with minimum 0(set to 0 minimum in sheet worker)-->
-            {{#rollBetween() computed::degrees2 1 5}}
+            {{#rollBetween() computed::reversedroll 1 5}}
               <tr class="sheet-success">
                 <th colspan="2">
-                  <span>Success with 0</span> <span>SL </span> 
+                  <span>Success with 0</span> <span>SL </span>
                 </th>
-              </tr>            
-            {{/rollBetween() computed::degrees2 1 5}}
+              </tr>
+              <tr class="sheet-success">
+                <th colspan="2">
+                  <span>01-05 is an automatic success.</span>
+                </th>
+              </tr>
+            {{/rollBetween() computed::reversedroll 1 5}}
             <!-- roll other than 1-5 is always a failure if roll is a 00 with minimum 0 unless roll is 00 (set to 0 minimum in sheet worker)-->
-            {{#^rollBetween() computed::degrees2 1 5}}
+            {{#^rollBetween() computed::reversedroll 1 5}}
                 <tr class="sheet-failure">
                   <th colspan="2">
                     <span>Failure with 0 </span> <span>SL </span>
                   </th>
-                </tr>              
-            {{/^rollBetween() computed::degrees2 1 5}}
-          {{/rollLess() computed::target reversedroll}}
+                </tr>
+            {{/^rollBetween() computed::reversedroll 1 5}}
+          {{/rollLess() computed::target computed::reversedroll}}
           <!-- end if target is less than reverseroll-->
         {{/rollTotal() computed::degrees2 0}}
         <!-- degrees2 is 0 -->
@@ -2210,7 +2225,7 @@
           {{/rollGreater() computed::reversedunitdigit 5}}
         {{/computed::reversedunitdigit}} 
       {{/^rollGreater() computed::degrees1 computed::degrees2}}
-      <!-- end reversedroll is greater than roll-->
+      <!-- end reversedroll is greater than roll so used reversedroll and degrees2-->
 		{{/rollGreater() advantage 0}}
     <!-- end roll with advantage -->
 
@@ -2232,46 +2247,75 @@
         {{/rollGreater() computed::degrees2 0}}
 
         {{#rollTotal() computed::degrees2 0}}
-          <!-- target is less than reverseroll -->
-          {{#^rollGreater() computed::target computed::reversedroll}}
+          <!-- target is same or greater than reverseroll -->
+          {{#^rollLess() computed::target computed::reversedroll}}
             <!-- roll 1-5 is always a success with minimum 0 (set to 0 minimum in sheet worker)-->
-            {{#rollBetween() computed::degrees2 1 5}}
-              <tr class="sheet-success">
+            {{#rollBetween() computed::reversedroll 96 99}}
+              <tr class="sheet-fail">
                 <th colspan="2">
-                  <span>Success with 0</span> <span>SL </span> 
+                  <span>Failure with 0</span> <span>SL </span>
                 </th>
-              </tr>            
-            {{/rollBetween() computed::degrees2 1 5}}
+              </tr>
+              <tr class="sheet-failure">
+                <th colspan="2">
+                  <span>96-100 is an automatic failure.</span>
+                </th>
+              </tr>
+            {{/rollBetween() computed::reversedroll 96 99}}
             <!-- roll 00-95 is always a failure with minimum 0 unless roll is 00 (set to 0 minimum in sheet worker)-->
-            {{#^rollBetween() computed::degrees2 1 5}}
+            {{#^rollBetween() computed::reversedroll 96 99}}
+              {{#rollTotal() computed::reversedroll 0}}
                 <tr class="sheet-failure">
                   <th colspan="2">
-                    <span>Failure with 0</span> <span>SL </span> 
+                    <span>Failure with 0</span> <span>SL </span>
                   </th>
                 </tr>
-            {{/^rollBetween() computed::degrees2 1 5}}
+              {{/rollTotal() computed::reversedroll 0}}
+              {{#^rollTotal() computed::reversedroll 0}}
+              <tr class="sheet-success">
+                <th colspan="2">
+                  <span>Success with 0</span> <span>SL </span>
+                </th>
+              </tr>
+              {{/^rollTotal() computed::reversedroll 0}}
+            {{/^rollBetween() computed::reversedroll 96 99}}
             <!-- end roll 00-95 is always a success with minimum 0 unless roll is 00 (set to 0 minimum in sheet worker)-->
-          {{/^rollGreater() computed::target computed::reversedroll}}
+          {{/^rollLess() computed::target computed::reversedroll}}
           <!-- end target is less than reverseroll-->
 
-          {{#rollGreater() computed::target computed::reversedroll}}
+          {{#rollLess() computed::target computed::reversedroll}}
+            {{#rollBetween() computed::reversedroll 1 5}}
+              <tr class="sheet-success">
+                <th colspan="2">
+                  <span>Success with 0</span> <span>SL </span>
+                </th>
+              </tr>
+              <tr class="sheet-success">
+                <th colspan="2">
+                  <span>01-05 is an automatic success.</span>
+                </th>
+              </tr>
+            {{/rollBetween() computed::reversedroll 1 5}}
+            {{#^rollBetween() computed::reversedroll 1 5}}
+            <tr class="sheet-failure">
+              <th colspan="2">
+                <span>Failure with 0</span> <span>SL </span>
+              </th>
+            </tr>
+            {{/^rollBetween() computed::reversedroll 1 5}}
+          {{/rollLess() computed::target computed::reversedroll}}
+        {{/rollTotal() computed::degrees2 0}}
+
+        {{#rollLess() computed::degrees2 0}}
           <tr class="sheet-failure">
             <th colspan="2">
-              <span>Failure with 0</span> <span>SL </span> 
+              UsingB : {{computed::degrees2}} SL -- Discarding: ({{computed::degrees1}} SL)
+              <br><span>Failure</span> with {{computed::degrees2}} <span>SL</span>
             </th>
           </tr>
-          {{/rollGreater() computed::target computed::reversedroll}}
-        {{/rollTotal() computed::degrees2 0}}
-    
-        {{#rollLess() computed::degrees2 0}}
-        <tr class="sheet-failure">
-          <th colspan="2">
-            UsingB : {{computed::degrees2}} SL -- Discarding: ({{computed::degrees1}} SL)
-            <br><span>Failure</span> with {{computed::degrees2}} <span>SL</span>
-          </th>
-        </tr>
         {{/rollLess() computed::degrees2 0}}
       {{/rollGreater() computed::degrees1 computed::degrees2}}
+      <!-- end roll is greater than reversedroll so use the reverse roll-->
 
       <!-- reversedroll is greater than roll so use roll-->
       {{#^rollGreater() computed::degrees1 computed::degrees2}}
@@ -2285,35 +2329,68 @@
         {{/rollGreater() computed::degrees1 0}}
 
         {{#rollTotal() computed::degrees1 0}}
-          <!-- target is less than roll -->
-          {{#^rollGreater() computed::target roll}}
+          <!-- target is same or greater than roll -->
+          {{#^rollLess() computed::target roll}}
             <!-- roll 1-5 is always a success with minimum 0 (set to 0 minimum in sheet worker)-->
-            {{#rollBetween() computed::degrees1 1 5}}
-              <tr class="sheet-success">
+            {{#rollBetween() roll 96 99}}
+              <tr class="sheet-fail">
                 <th colspan="2">
-                  <span>Success with 0</span> <span>SL </span> 
+                  <span>Failure with 0</span> <span>SL </span>
                 </th>
-              </tr>            
-            {{/rollBetween() computed::degrees1 1 5}}
+              </tr>
+              <tr class="sheet-failure">
+                <th colspan="2">
+                  <span>96-100 is an automatic failure.</span>
+                </th>
+              </tr>
+            {{/rollBetween() roll 96 99}}
             <!-- roll 00-95 is always a failure with minimum 0 unless roll is 00 (set to 0 minimum in sheet worker)-->
-            {{#^rollBetween() computed::degrees1 1 5}}
+            {{#^rollBetween() roll 96 99}}
+              {{#rollTotal() roll 0}}
                 <tr class="sheet-failure">
                   <th colspan="2">
-                    <span>Failure with 0</span> <span>SL </span> 
+                    <span>Failure with 0</span> <span>SL </span>
                   </th>
                 </tr>
-            {{/^rollBetween() computed::degrees1 1 5}}
+                <tr class="sheet-failure">
+                  <th colspan="2">
+                    <span>96-100 is an automatic failure.</span>
+                  </th>
+                </tr>
+              {{/rollTotal() roll 0}}
+              {{#^rollTotal() roll 0}}
+              <tr class="sheet-success">
+                <th colspan="2">
+                  <span>Success with 0</span> <span>SL </span>
+                </th>
+              </tr>
+              {{/^rollTotal() roll 0}}
+            {{/^rollBetween() roll 96 99}}
             <!-- end roll 00-95 is always a success with minimum 0 unless roll is 00 (set to 0 minimum in sheet worker)-->
-          {{/^rollGreater() computed::target roll}}
+          {{/^rollLess() computed::target roll}}
           <!-- end target is less than roll-->
 
-          {{#rollGreater() computed::target roll}}
-          <tr class="sheet-failure">
-            <th colspan="2">
-              <span>Failure with 0</span> <span>SL </span> 
-            </th>
-          </tr>
-          {{/rollGreater() computed::target roll}}
+          {{#rollLess() computed::target roll}}
+            {{#rollBetween() roll 1 5}}
+              <tr class="sheet-success">
+                <th colspan="2">
+                  <span>Success with 0</span> <span>SL </span>
+                </th>
+              </tr>
+              <tr class="sheet-success">
+                <th colspan="2">
+                  <span>01-05 is an automatic success.</span>
+                </th>
+              </tr>
+            {{/rollBetween() roll 1 5}}
+            {{#^rollBetween() roll 1 5}}
+            <tr class="sheet-failure">
+              <th colspan="2">
+                <span>Failure with 0</span> <span>SL </span>
+              </th>
+            </tr>
+            {{/^rollBetween() roll 1 5}}
+          {{/rollLess() computed::target roll}}
         {{/rollTotal() computed::degrees1 0}}
     
         {{#rollLess() computed::degrees1 0}}
@@ -2346,6 +2423,11 @@
               <span>Success with 0 </span> <span>SL </span>
             </th>
           </tr>
+          <tr class="sheet-success">
+            <th colspan="2">
+              <span>01-05 is an automatic success.</span>
+            </th>
+          </tr>
         {{/rollBetween() roll 1 5}}
 
         {{#^rollBetween() roll 1 5}}
@@ -2355,32 +2437,42 @@
                 <span>Failure with 0 </span> <span>SL </span>
               </th>
             </tr>
+            <tr class="sheet-failure">
+              <th colspan="2">
+                <span>96-100 is an automatic failure.</span>
+              </th>
+            </tr>
           {{/rollTotal() roll 0}}
           {{#^rollTotal() roll 0}}
-            {{#rollBetween() roll 95 99}}
+            {{#rollBetween() roll 96 99}}
               <tr class="sheet-failure">
                 <th colspan="2">
-                  <span>Failure with 0</span> <span>SL </span> 
+                  <span>Failure with 0</span> <span>SL </span>
                 </th>
               </tr>
-            {{/rollBetween() roll 95 99}}
-            {{#^rollBetween() roll 95 99}}
+              <tr class="sheet-failure">
+                <th colspan="2">
+                  <span>96-100 is an automatic failure.</span>
+                </th>
+              </tr>
+            {{/rollBetween() roll 96 99}}
+            {{#^rollBetween() roll 96 99}}
               {{#rollLess() computed::target roll}}
                 <tr class="sheet-success">
                   <th colspan="2">
-                    <span>Success with 0</span> <span>SL </span> 
+                    <span>Success with 0</span> <span>SL </span>
                   </th>
                 </tr>
               {{/rollLess() computed::target roll}}
               {{#^rollLess() computed::target roll}}
                 <tr class="sheet-failure">
                   <th colspan="2">
-                    <span>Failure with 0</span> <span>SL </span> 
+                    <span>Failure with 0</span> <span>SL </span>
                   </th>
                 </tr>
               {{/^rollLess() computed::target roll}}
-            {{#^rollBetween() roll 95 99}}
-          {{/rollTotal() roll 0}}
+            {{/^rollBetween() roll 96 99}}
+          {{/^rollTotal() roll 0}}
         {{/^rollBetween() roll 1 5}}
       {{/rollTotal() computed::degrees1 0}}
 
@@ -2604,6 +2696,8 @@
 
       //fix degrees for rolls of 01-05 and 96-100
       let autoSuccessFailFixFn = (num_rolled, degrees) => {
+        if (debug) console.log("NUM ROLLED: "+num_rolled);
+        if (debug) console.log("DEGREES: "+degrees);
         if (num_rolled < 6 && degrees < 0) {
           return 0;
         } else if ((num_rolled > 95 || num_rolled == 0) && degrees > 0) {
@@ -2612,8 +2706,10 @@
         return degrees;
       }
 
-      degrees1 = autoSuccessFailFixFn(roll, degrees);
-      degrees2 = autoSuccessFailFixFn(reverseroll, degrees);
+      degrees1 = autoSuccessFailFixFn(roll, degrees1);
+      if (debug) console.log("DEGREES1 FIXED: "+degrees1);
+      degrees2 = autoSuccessFailFixFn(reversedNum, degrees2);
+      if (debug) console.log("DEGREES2 FIXED: "+degrees2);
 
       let finalDamageFn = (advantage, damage, degrees1, degrees2) => {
         let degrees = degrees1;
