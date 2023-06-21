@@ -90,6 +90,9 @@ label {
   padding: 2px;
   border: 1px solid #000000;
 }
+.skillstablefirst {
+  width:58%;
+}
 .specialisationtable {
   display: grid;
   grid-template-columns: 1fr 1fr .5fr .5fr;
