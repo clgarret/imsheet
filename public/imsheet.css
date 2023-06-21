@@ -25,6 +25,9 @@
 .width50 {
   width: 50%;
 }
+.width90 {
+  width: 90%;  
+}
 .width100 {
   width: 100%;
 }
@@ -66,7 +69,7 @@ label {
 }
 .characteristicstable {
     display: grid;
-    grid-template-columns: repeat(11, 45px);
+    grid-template-columns: repeat(11, 53px);
 }
 .characteristicstable > div {
   margin: 2px;
